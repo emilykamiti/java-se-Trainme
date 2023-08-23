@@ -2,11 +2,11 @@ package com.systechafrica;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.TestInstance;
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) //? default insance
 public class AppTest {
     //? Reference => App
     App app = new App();
-
 
 
     @Test
