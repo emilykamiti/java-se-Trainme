@@ -36,12 +36,6 @@ public class OperatorsDemo {
         LOGGER.info("Remainder: " + remainder);
 
     }
-    public static void main(String[] args) {
-        OperatorsDemo app = new OperatorsDemo();
-        // app.arithmeticOperators();
-        app.comparisonOperators();
-    }
-
     public void assignmentOperators() {
         //simple assignment operator
         int quantity = 35;
@@ -88,13 +82,6 @@ public class OperatorsDemo {
         boolean isStudentOneAgeGeaterThanOrEqualToStudentTwoAge = studentOneAge >= studentTwoAge;
         LOGGER.info("isStudentOneAgeGreaterThanOrEqualToStudentTwoAge: " + isStudentOneAgeGreaterThanOrEqualToStudentTwoAge);
 
-    }
-
-    public static void main(String[] args) {
-        OperatorsDemo app = new OperatorsDemo();
-        // app.arithmeticOperators();
-        // app.assignmentOperators();
-        app.comparisonOperators();
     }
 
     public static void main(String[] args) {
