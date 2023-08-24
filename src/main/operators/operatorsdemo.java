@@ -2,8 +2,8 @@ package com.systechafrica.operators;
 
 import java.util.logging.Logger;
 
-public class OperatorsDemo {
-    private static final Logger LOGGER = Logger.getLogger(OperatorsDemo.class.getName());
+public class operatorsDemo {
+    private static final Logger LOGGER = Logger.getLogger(operatorsDemo.class.getName());
 
     public void arithmeticOperators() {
 
@@ -79,13 +79,13 @@ public class OperatorsDemo {
 
         // TODO: Do one for greater than or equal to operator
         //code here
-        boolean isStudentOneAgeGeaterThanOrEqualToStudentTwoAge = studentOneAge >= studentTwoAge;
+        boolean isStudentOneAgeGreaterThanOrEqualToStudentTwoAge = studentOneAge >= studentTwoAge;
         LOGGER.info("isStudentOneAgeGreaterThanOrEqualToStudentTwoAge: " + isStudentOneAgeGreaterThanOrEqualToStudentTwoAge);
 
     }
 
     public static void main(String[] args) {
-        OperatorsDemo app = new OperatorsDemo();
+        operatorsDemo app = new operatorsDemo();
         // app.arithmeticOperators();
         // app.assignmentOperators();
         app.comparisonOperators();
