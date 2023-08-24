@@ -62,3 +62,4 @@ public class VarDemo {
         demo.booleanTypes();
     }
 }
+
