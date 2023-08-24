@@ -12,5 +12,6 @@ private static final Logger LOGGER = Logger.getLogger(App.class.getName());
     public int add(int a, int b){
         return a + b;
     }
-
+    
 }
+
