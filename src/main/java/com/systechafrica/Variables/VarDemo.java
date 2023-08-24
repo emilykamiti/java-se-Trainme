@@ -37,8 +37,20 @@ public class VarDemo {
         LOGGER.info("Byte wrapper " + aWrapper );
 
         int a = aWrapper.intValue();
+
         LOGGER.info("Integer value from Byte wrapper " + a );
 
+        //short a = 23;
+        short aShort = 23;
+
+        // integer
+        int c = 23;
+        Integer aInt = 23;
+
+        //long
+        long d = 23;
+        //! You need to explicitly suffix the Long wrapper with L 
+        Long aLong = 23L;
 
 
 
@@ -50,6 +62,14 @@ public class VarDemo {
         double doubleRate = 2.123456;
         LOGGER.info("Float value = " + floatRate);
           LOGGER.info("double value = " + doubleRate);
+
+          //flot
+          Float price = 0.2365F;
+          float priceFloat = 0.2365F;
+
+          //double
+          double prtPrice = 0.2365;
+          Double priceDouble = 0.2365;
           
 
     }
@@ -57,6 +77,10 @@ public class VarDemo {
         //character types
        char grade ='A';
           LOGGER.info("char value = " + grade);
+
+          //character type
+          Character characterGrade = 'F';
+          
     }
 
     private void booleanTypes(){
