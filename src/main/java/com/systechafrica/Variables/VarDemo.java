@@ -17,14 +17,31 @@ public class VarDemo {
         LOGGER.info("constant variable PI = " + PI);
     } 
 
+    /**
+     * 
+     */
     public void integerTypes(){
-        variableDeclaration();
 
         LOGGER.info("Integer Minimum " + Integer .MIN_VALUE );
         LOGGER.info("Integer Minimum " + Integer.MAX_VALUE );
 
         LOGGER.info("Integer Minimum " + Long .MIN_VALUE );
         LOGGER.info("Integer Minimum " + Long.MAX_VALUE );
+        // byte, short, long, int
+        //? wrapper classes
+
+        byte aPrimitive = 23;
+        Byte aWrapper = 23;
+
+        LOGGER.info("byte primitive " + aPrimitive );
+        LOGGER.info("Byte wrapper " + aWrapper );
+
+        int a = aWrapper.intValue();
+        LOGGER.info("Integer value from Byte wrapper " + a );
+
+
+
+
     }    
     
     private void floatingTypes(){
