@@ -57,6 +57,46 @@ public class OperatorsDemo {
         quantity /= 20; // > quantity = quantity / 20;
         LOGGER.info("Quantity: " + quantity);
     }
+    public void comparisonOperators() {
+        int studentOneAge = 20;
+        int studentTwoAge = 25;
+
+        // equality operator
+        boolean isStudentOneAgeEqualToStudentTwoAge = studentOneAge == studentTwoAge;
+        LOGGER.info("isStudentOneAgeEqualToStudentTwoAge: " + isStudentOneAgeEqualToStudentTwoAge);
+
+        // Inequality operator
+        boolean isStudentOneAgeNotEqualToStudentTwoAge = studentOneAge != studentTwoAge;
+        LOGGER.info("isStudentOneAgeNotEqualToStudentTwoAge: " + isStudentOneAgeNotEqualToStudentTwoAge);
+
+        // less than operator
+        boolean isStudentOneAgeLessThanStudentTwoAge = studentOneAge < studentTwoAge;
+        LOGGER.info("isStudentOneAgeLessThanStudentTwoAge: " + isStudentOneAgeLessThanStudentTwoAge);
+
+        // greater than operator
+        boolean isStudentOneAgeGreaterThanStudentTwoAge = studentOneAge > studentTwoAge;
+        LOGGER.info("isStudentOneAgeGreaterThanStudentTwoAge: " + isStudentOneAgeGreaterThanStudentTwoAge);
+
+        // TODO: Do one for less than or equal to operator
+        //code here
+        boolean isStudentOneAgeLessThanOrEqualToStudentTwoAge = studentOneAge <= studentTwoAge;
+        LOGGER.info("isStudentOneAgeLessThanOrEqualToStudentTwoAge: " + isStudentOneAgeLessThanOrEqualToStudentTwoAge);
+
+
+        // TODO: Do one for greater than or equal to operator
+        //code here
+        boolean isStudentOneAgeGeaterThanOrEqualToStudentTwoAge = studentOneAge >= studentTwoAge;
+        LOGGER.info("isStudentOneAgeGreaterThanOrEqualToStudentTwoAge: " + isStudentOneAgeGreaterThanOrEqualToStudentTwoAge);
+
+    }
+
+    public static void main(String[] args) {
+        OperatorsDemo app = new OperatorsDemo();
+        // app.arithmeticOperators();
+        // app.assignmentOperators();
+        app.comparisonOperators();
+    }
+
     public static void main(String[] args) {
         OperatorsDemo app = new OperatorsDemo();
         // app.arithmeticOperators();
