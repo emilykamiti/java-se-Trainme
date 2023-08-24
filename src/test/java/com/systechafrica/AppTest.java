@@ -16,7 +16,7 @@ public class AppTest {
         //then
         int expected = 5;
         //verify that result = expected
-        Assertions.assertEquals(expected, result, "The sum of 2 + 5 shold be 5");
+        Assertions.assertEquals(expected, result, "The sum of 2 + 5 should be 5");
     }
 
 }
