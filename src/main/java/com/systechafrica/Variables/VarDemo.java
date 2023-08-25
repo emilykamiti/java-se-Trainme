@@ -110,4 +110,3 @@ public class VarDemo {
         LOGGER.info("int b value" + c);
     }
 }
-
