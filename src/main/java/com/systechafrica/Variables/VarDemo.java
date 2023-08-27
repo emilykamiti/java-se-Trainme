@@ -17,16 +17,19 @@ public class VarDemo {
         LOGGER.info("constant variable PI = " + PI);
     } 
 
-    /**
-     * 
-     */
     public void integerTypes(){
 
         LOGGER.info("Integer Minimum " + Integer .MIN_VALUE );
-        LOGGER.info("Integer Minimum " + Integer.MAX_VALUE );
+        LOGGER.info("Integer Maximum " + Integer.MAX_VALUE );
 
         LOGGER.info("Integer Minimum " + Long .MIN_VALUE );
-        LOGGER.info("Integer Minimum " + Long.MAX_VALUE );
+        LOGGER.info("Integer Minimum " + Long .MAX_VALUE );
+        
+        LOGGER.info("Integer Minimum " + Short .MIN_VALUE );
+        LOGGER.info("Integer Minimum " + Short .MAX_VALUE );
+
+        
+
         // byte, short, long, int
         //? wrapper classes
 
@@ -40,8 +43,9 @@ public class VarDemo {
 
         LOGGER.info("Integer value from Byte wrapper " + a );
 
-        //short a = 23;
-        short aShort = 23;
+        // short
+        //short a = 23; 
+        Short aShort = 23; //wrapper classes
 
         // integer
         int c = 23;
@@ -63,9 +67,9 @@ public class VarDemo {
         LOGGER.info("Float value = " + floatRate);
           LOGGER.info("double value = " + doubleRate);
 
-          //flot
-          Float price = 0.2365F;
-          float priceFloat = 0.2365F;
+          //float
+          float price = 0.2365F;
+          Float priceFloat = 0.2365F;
 
           //double
           double prtPrice = 0.2365;

@@ -120,7 +120,7 @@ public class operatorsDemo {
     if ( !isStudentOneAllowed ) {
         LOGGER.info("All students allowed to apply for ID registration");
     }else{
-    LOGGER.info("Not allowed for ID registration");
+        LOGGER.info("Not allowed for ID registration");
 
        }
     
