@@ -28,13 +28,21 @@ public class Looping {
            studentCount++; //
         }
         }
-         
+    public void dowhileloop(){
+        int studentCount = 0;
+        do {
+            LOGGER.info("Student Count = " + studentCount);
+            studentCount++;
+
+        }while(studentCount < 10);
+    }  
 
 public static void main(String[] args) {
-    Looping app = new Looping();
+   Looping app  = new Looping();
     //app.ifelseStatement();
     //app.switchStatement();
     //app.forloop();
-    app.whileloop();
+   // app.whileloop();
+    app.dowhileloop();
 }
 }
