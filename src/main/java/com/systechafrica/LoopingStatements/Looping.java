@@ -19,11 +19,22 @@ public class Looping {
                 LOGGER.info("Count = " + counter);
         }
     }
+    public void whileloop(){
+       
+        // initialize condition update
+        int studentCount = 0;
+        while (studentCount < 10){
+            LOGGER.info("Student Count = " + studentCount);
+           studentCount++; //
+        }
+        }
+         
 
 public static void main(String[] args) {
     Looping app = new Looping();
     //app.ifelseStatement();
     //app.switchStatement();
-    app.forloop();
+    //app.forloop();
+    app.whileloop();
 }
 }
