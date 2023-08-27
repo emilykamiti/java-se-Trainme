@@ -50,11 +50,12 @@ public static final Logger LOGGER = Logger.getLogger(Cflow.class.getSimpleName()
                 LOGGER.info("Please specify a valid day");
         }
     }
-    
+   
 
 public static void main(String[] args) {
     Cflow app = new Cflow();
     app.ifelseStatement();
     app.switchStatement();
+    app.forloop();
 }
 }

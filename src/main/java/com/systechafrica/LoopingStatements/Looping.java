@@ -1,0 +1,29 @@
+package com.systechafrica.LoopingStatements;
+
+import java.util.logging.Logger;
+
+
+
+public class Looping {
+    private static final Logger LOGGER = Logger.getLogger(Looping.class.getName());
+
+    public void forloop(){
+       
+        // initialize condition update
+        for( int counter = 0; counter <= 10; counter = counter + 1 ){
+                LOGGER.info("Count = " + counter);
+        }
+         for( int counter = 0; counter <= 10; counter = counter += 1 ){
+                LOGGER.info("Count = " + counter);
+        }for( int counter = 0; counter <= 10; counter = counter ++ ){
+                LOGGER.info("Count = " + counter);
+        }
+    }
+
+public static void main(String[] args) {
+    Looping app = new Looping();
+    //app.ifelseStatement();
+    //app.switchStatement();
+    app.forloop();
+}
+}
