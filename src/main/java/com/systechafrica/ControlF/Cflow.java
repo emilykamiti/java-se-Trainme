@@ -56,6 +56,6 @@ public static void main(String[] args) {
     Cflow app = new Cflow();
     app.ifelseStatement();
     app.switchStatement();
-    app.forloop();
+    //app.forloop();
 }
 }
