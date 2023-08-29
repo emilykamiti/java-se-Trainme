@@ -17,7 +17,7 @@ class MathTest{
         Math app = new Math(); //? create Math Object
         app.add(2, 2);
         //assertEquals(4, app.add(2, 2));
-        assertEquals(4, app.add(2,9));
+        assertEquals(4, app.add(2,2));
     }
 
     @Test
