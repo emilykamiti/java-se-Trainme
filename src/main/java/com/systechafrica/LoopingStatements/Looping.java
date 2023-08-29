@@ -38,6 +38,8 @@ public class Looping {
         } while(studentCount < 10);
     }  
 
+    String name ="John";
+    //! Explore more on String Methods
     public void breakjumpStatements(){
 
     }
