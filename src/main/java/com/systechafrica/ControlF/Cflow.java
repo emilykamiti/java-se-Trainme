@@ -3,7 +3,7 @@ package com.systechafrica.ControlF;
 import java.util.logging.Logger;
 
 public class Cflow {
-public static final Logger LOGGER = Logger.getLogger(Cflow.class.getSimpleName());
+public static final Logger LOGGER = Logger.getLogger(Cflow.class.getName());
 
     public void ifelseStatement(){
     
@@ -56,6 +56,5 @@ public static void main(String[] args) {
     Cflow app = new Cflow();
     app.ifelseStatement();
     app.switchStatement();
-    //app.forloop();
 }
 }
