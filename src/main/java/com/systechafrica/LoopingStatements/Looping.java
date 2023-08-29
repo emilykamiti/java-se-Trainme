@@ -72,6 +72,14 @@ public class Looping {
         }
         LOGGER.info("after my loop ");
     }
+    public int search(int numberToSearch){
+        for (int index = 1; index <= 50; index++){
+            if(index == numberToSearch){
+                return index;
+            }
+        }
+        return 0;
+    }
 public static void main(String[] args) {
    Looping app  = new Looping();
     //app.ifelseStatement();
