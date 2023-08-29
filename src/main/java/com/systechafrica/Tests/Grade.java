@@ -6,19 +6,19 @@ public class Grade {
             if (MarkGrade < 0){
                 throw new IllegalArgumentException("Number grade cannot");
             }
-        if (MarkGrade < 60 ){
+        if (MarkGrade < 40 ){
             return 'F';
     
         }
-        else if (MarkGrade < 50){
+        if (MarkGrade < 50){
             return 'D';
     
         }
-        else if (MarkGrade < 60){
+        if (MarkGrade < 60){
             return 'C';
     
         }
-        else if (MarkGrade>= 70){
+        if (MarkGrade>= 70){
             return 'B';
         }
         else {
@@ -27,3 +27,4 @@ public class Grade {
 }
 }
 
+// Above is without Else, its just if. Let the Test comfirm if it okay
