@@ -1,22 +1,30 @@
 package com.systechafrica;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class MathTest {
-    Math app = new Math();
 
-     @Test
-        void subtract() {
-            int result = app.subtract(2, 3);
-            //then
-            int expected = -1;
-            //verify that result = expected
-            Assertions.assertEquals(expected, result, "The answer  should be -1");
-        }
+import com.systechafrica.Tests.Math;
 
-        }
+class MathTest{
 
-     
+    @Test
+    void twoplusthreeShouldEqualFive(){
+        Math app = new Math(); //? create Math Object
+        app.add(2, 2);
+        //assertEquals(4, app.add(2, 2));
+        assertEquals(4, app.add(2,7));
+    }
 
+    @Test
+    void twoplusthreeShouldEqualTen(){
+        Math app = new Math(); //? create Math Object
+        app.add(2, 2);
+        //assertEquals(4, app.add(2, 2));
+        assertEquals(10, app.add(3, 7));
+    }
+}
