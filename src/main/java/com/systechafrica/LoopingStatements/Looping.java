@@ -61,14 +61,26 @@ public class Looping {
         }
         LOGGER.info("after my loop ");
     }
+
+    public void returnJumpstatements(){
+        LOGGER.info("before my loop");
+        for (int index = 0; index < 10; index++){
+            if(index == 4){
+                return;
+            }
+            LOGGER.info("my index is: " + index);
+        }
+        LOGGER.info("after my loop ");
+    }
 public static void main(String[] args) {
    Looping app  = new Looping();
     //app.ifelseStatement();
     //app.switchStatement();
     //app.forloop();
-   // app.whileloop();
+    // app.whileloop();
     //app.dowhileloop();
-    app.continueJumpstatements();
-    app.breakJumpstatements();
+    //app.continueJumpstatements();
+    //app.breakJumpstatements();
+    app.returnJumpstatements();
 }
 }
