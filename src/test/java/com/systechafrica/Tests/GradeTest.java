@@ -1,6 +1,7 @@
 package com.systechafrica.Tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,13 +26,23 @@ public class GradeTest {
     @Test
     void shouldReturnB(){
         Grade app = new Grade();
-        assertEquals('B', app.DetermineGrade(69));
+        assertEquals('A', app.DetermineGrade(69));
     }
         @Test
         void shouldReturnA(){
         Grade app = new Grade();
-        assertEquals('A', app.DetermineGrade(89));
+        assertEquals('B', app.DetermineGrade(89));
+        
+    } 
+    @Test
+        void NegativeReturnIllegalArgumentException(){
+        Grade app = new Grade();
+        assertThrows(IllegalArgumentException.class,
+         ()->{
+            app.DetermineGrade(-1);
+         });
         
     }    
 
 }
+
