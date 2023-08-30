@@ -10,7 +10,7 @@ public class operatorsDemo {
         int studentOneAge = 22;
         int studentTwoAge = 19;
 
-        //Addition operator
+        //Addition operator 
         int totalClassAge = studentOneAge + studentTwoAge;
         LOGGER.info("Total class Age: " + totalClassAge);
 
@@ -47,7 +47,7 @@ public class operatorsDemo {
         //multiplication assignment operator
         quantity *= 100; // > quantity = quantity * 100;
         LOGGER.info("Quantity: " + quantity);
-        // multiplication assignment operator
+        // Division assignment operator
         quantity /= 20; // > quantity = quantity / 20;
         LOGGER.info("Quantity: " + quantity);
     }

@@ -38,7 +38,7 @@ public class Looping {
         } while(studentCount < 10);
     }  
 
-    String name ="John";
+    String name ="Emily";
     //! Explore more on String Methods
     public void breakjumpStatements(){
 
@@ -82,15 +82,15 @@ public class Looping {
         }
         return 0;
     }
-public static void main(String[] args) {
+    public static void main(String[] args) {
    Looping app  = new Looping();
-    //app.ifelseStatement();
-    //app.switchStatement();
-    //app.forloop();
-    // app.whileloop();
-    //app.dowhileloop();
-    //app.continueJumpstatements();
-    //app.breakJumpstatements();
-    app.returnJumpstatements();
+   // app.ifelseStatements();
+   // app.switchStatement();
+   // app.forloop();
+   // app.dowhileloop();
+    //app.whileloop();
+    // app.continueJumpstatements();
+    // app.breakJumpstatements();
+    // app.returnJumpstatements();
 }
 }
