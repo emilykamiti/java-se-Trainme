@@ -4,42 +4,54 @@ import java.util.Scanner;
 
 public class atmMachime {
 
+    package com.systechafrica.UserInput;
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.Scanner;
+
+class ATMmachine {
+
+    //chek every point in the question where variables are: Declare them and initialize them here. If they are found in class ATMmachine
     public static void main(String[] args) {
-
-
-        final String User_Name = "Kamiti";
-        final String user_Password = "Admin123";
-        int loginTrial = 0;
-        double accountBalance = 1000;
-        Scanner scanner = new Scanner(System.in);
-
-        while (loginTrial <= 3) {
-            System.out.println("Input password");
-
-            System.out.print("Username: ");
-            String username = scanner.nextLine();
-            System.out.print("Password: ");
-            String userPassword = scanner.nextLine();
-
-            if (username.equals(User_Name) && userPassword.equals(user_Password)) {
-                System.out.println("Login successful");
+        //By using the word final , you ensure that the thhe srting value can not be changed. When you want certain values to remain the same. 
+    final String User_name = "Kamiti";
+    final String User_password = "Kamiti101";
+    
+    
+    // shows you how many times you've tried logging in.
+    int Attempts = 0;
+    
+    // How much you have in the account
+    
+    double accountBalance = 1000;
+    // Hey computer, make a new Scanner robot that listens to what we type on the keyboard , and let's call it Ear, so we can use it later to listen ..
+        Scanner Ear = new Scanner(System.in);
+      
+    //   While loop. Keep doing somethings as long as  a certain condition is true
+        while(Attempts < 3){
+            System.out.println("Tell the Ear your secret:");
+            
+            System.out.println("Your name: ");
+            String nameInput = Ear.nextLine();
+            System.out.println("Your Password: ");
+            String passInput = Ear.nextLine();
+            
+            Object codeInput;
+            if (nameInput.equals(User_name) && passInput.equals(User_password )){
+                System .out.println("Welcome you got it right");
                 break;
             } else {
-                System.out.println("Login was unsuccessful. Please try again.");
-                loginTrial++;
-            }
-            if (loginTrial == 3) {
-                System.err.println("You've reached Maximum login attemps");
-                scanner.close();
-                    return;
+                System.out.println("Aaaah Not right, Try again!");
+                Attempts++;
                 
             }
-        }
-
-        if (loginTrial == 3) {
-            System.err.println("You have exceeded the maximum login attempts. The system will now stop.");
-            scanner.close();
-            return;
+            
+            if (Attempts == 3){
+                System.err.println("You number of attempts is over.");
+                Ear.close();
+                return;
         }
 
         while (true) {
