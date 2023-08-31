@@ -28,6 +28,12 @@ public class atmMachime {
                 System.out.println("Login was unsuccessful. Please try again.");
                 loginTrial++;
             }
+            if (loginTrial == 3) {
+                System.err.println("You've reached Maximum login attemps");
+                scanner.close();
+                    return;
+                
+            }
         }
 
         if (loginTrial == 3) {
@@ -80,10 +86,6 @@ public class atmMachime {
                     break;
                 case 5:
                     scanner.close();
-                    return;
-                default:
-                    System.out.print("Invalid Input");
-                    break;
             }
         }
     }

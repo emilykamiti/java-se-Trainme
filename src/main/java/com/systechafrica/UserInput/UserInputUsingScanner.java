@@ -15,7 +15,7 @@ public class UserInputUsingScanner {
         System.out.print("Enter your username: ");
         String username = scanner.nextLine(); 
         
-        System.out.print("Enter your passwordEmilyEmily: ");
+        System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
         if ( username.equals(DB_USERNAME)  && password.equals(DB_PASSWORD)){
