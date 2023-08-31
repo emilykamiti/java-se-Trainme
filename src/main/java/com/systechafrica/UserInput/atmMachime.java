@@ -1,11 +1,5 @@
 package com.systechafrica.UserInput;
 
-import java.util.Scanner;
-
-public class atmMachime {
-
-    package com.systechafrica.UserInput;
-
 // Online Java Compiler
 // Use this editor to write, compile and run your Java code online
 
@@ -68,7 +62,7 @@ class ATMmachine {
             System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
 
             System.out.println("Please choose an option");
-            int option_chosen = scanner.nextInt();
+            int option_chosen = Ear.nextInt();
 
             switch (option_chosen) {
                 case 1:
@@ -76,13 +70,13 @@ class ATMmachine {
                     break;
                 case 2:
                     System.out.print("Enter deposit  ");
-                    double amountToDeposit = scanner.nextDouble();
+                    double amountToDeposit = Ear.nextDouble();
                     accountBalance += amountToDeposit;
                     System.out.print("Your new account balance is ksh. " + accountBalance);
                     break;
                 case 3:
                     System.out.print("Enter the amount you want to withdraw: ");
-                    double amountWithdraw = scanner.nextDouble();
+                    double amountWithdraw = Ear.nextDouble();
                     double ChargesForWithdraw = amountWithdraw * 0.02;
                     
                     if (amountWithdraw + ChargesForWithdraw < accountBalance) {
@@ -97,7 +91,7 @@ class ATMmachine {
                     System.out.print("Service not wworking at a moment");
                     break;
                 case 5:
-                    scanner.close();
+                    Ear.close();
             }
         }
     }
