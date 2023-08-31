@@ -8,12 +8,12 @@ public class atmMachime {
 
 
         final String User_Name = "Kamiti";
-        final String user_Password = "Kamiti001";
+        final String user_Password = "Admin123";
         int loginTrial = 0;
         double accountBalance = 1000;
         Scanner scanner = new Scanner(System.in);
 
-        while (loginTrial < 3) {
+        while (loginTrial <= 3) {
             System.out.println("Input password");
 
             System.out.print("Username: ");
