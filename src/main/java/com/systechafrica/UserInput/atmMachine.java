@@ -9,6 +9,8 @@ public class atmMachine {
     final String User_name = "Emily";
     final String User_password = "Kamiti101";
     int Attempts = 0;
+
+    //Ear is a nick name I gave to the hearing feature.
     
     double accountBalance = 1000;
     Scanner Ear = new Scanner(System.in); 
@@ -27,7 +29,7 @@ public class atmMachine {
                 System.out.println("Successful");
                 break;
             } else {
-                System.out.println("Aaaah Not right, Try again!");
+                System.out.println("Not right, Try again!");
                 Attempts++;
                 
             }
