@@ -19,13 +19,13 @@ public class Calculator {
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Enter a list of space sepe rated numbers");
+            System.out.println("Enter a list of space seperated numbers");
             int a = scanner.nextInt();
             int b = scanner.nextInt();
             int c = scanner.nextInt();
             int d = scanner.nextInt();
             int e = scanner.nextInt();
             System.out.println(calculator.sum(a, b, c, d, e));
-            System.out.println(calculator.sum(10, 5,5, 20, 100, 45, 85));
+            System.out.println(calculator.sum(10, 5,5, 20, 100, 45));
     }
 }
