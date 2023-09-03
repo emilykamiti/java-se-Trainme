@@ -3,16 +3,15 @@ package com.systechafrica.UserInput;
 
 import java.util.Scanner;
 
-class atmMachine {
+public class atmMachine {
     public static void main(String[] args) {
      
     final String User_name = "Emily";
     final String User_password = "Kamiti101";
-
     int Attempts = 0;
     
     double accountBalance = 1000;
-        Scanner Ear = new Scanner(System.in);
+    Scanner Ear = new Scanner(System.in); 
 
         while(Attempts < 3){
             System.out.println("Tell the Ear your secret:");
@@ -21,18 +20,18 @@ class atmMachine {
             String nameInput = Ear.nextLine();
             System.out.print("Your Password: ");
             String passInput = Ear.nextLine();
-            Ear.nextLine();
+            
             
             if (nameInput.equals(User_name) && passInput.equals(User_password )){
                 
-                System.out.println("SUccessful");
+                System.out.println("Successful");
                 break;
             } else {
                 System.out.println("Aaaah Not right, Try again!");
                 Attempts++;
                 
             }
-            
+        }
             if (Attempts == 3){
                 System.err.println("You number of attempts is over.");
                 Ear.close();
@@ -75,7 +74,7 @@ class atmMachine {
                         System.out.print("You have successfully withdrawn ksh. " + amountWithdraw +
                                          ". New balance is ksh. " + accountBalance);
                     } else {
-                        System.out.print("Insuffiecient Balanca, Your account balance is ksh. " + accountBalance);
+                        System.out.print("Insuffiecient Balance, Your account balance is ksh. " + accountBalance);
                     }
                     break;
                 case 4:
@@ -91,5 +90,4 @@ class atmMachine {
         }
     }
 
-    }
 }
