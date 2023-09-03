@@ -2,6 +2,8 @@ package com.systechafrica.ControlF;
 
 import java.util.logging.Logger;
 
+import com.systechafrica.Util.ValidateInput;
+
 public class Cflow {
 public static final Logger LOGGER = Logger.getLogger(Cflow.class.getName());
 
@@ -26,6 +28,7 @@ public static final Logger LOGGER = Logger.getLogger(Cflow.class.getName());
 }
     public void switchStatement(){
         String day = "Unknown";
+        ValidateInput.validate(day);
         switch(day){
             case "MONDAY":
                 LOGGER.info( "Monday is a working day");
