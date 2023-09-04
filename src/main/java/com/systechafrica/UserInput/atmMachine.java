@@ -16,7 +16,33 @@ public class AtmMachine {
         if(loggedIn) {
             System.out.println("Successfully logged in");
             // show menu
-        }else{
+            boolean keepShowingMenu = true;
+            while(keepShowingMenu){// while(true)
+                 app.displayMenu();
+                System.out.println("choose your option: ");
+                int option = app.scanner.nextInt();
+
+                if(option == 1){
+                    app.checkBalance();
+
+                }else if(option == 2){
+                    app.performDeposit();
+
+                }else if (option == 3){
+                    app.performWithdrawal();
+
+                }else if (option == 4){
+                    app.performTransfer();
+
+                }else if (option == 5){
+                    keepShowingMenu = false;
+                
+            }else{
+                System.out.println("Invalid opton ...try again");
+
+            }
+        }
+        } else{
             System.out.println("Maximum attempts failed");
         }
     }
@@ -34,7 +60,7 @@ public class AtmMachine {
                 break;
             }
             System.out.println("Wrong password");
-            loginEntries++; // logignEntries = loginEntries+1;
+            loginEntries++; // loginEntries = loginEntries+1;
             
 
         }
@@ -42,6 +68,16 @@ public class AtmMachine {
     }
 
     public void displayMenu(){
+        System.out.println("********************************");
+        System.out.println("*************ATM SIMULATOR******");
+        System.out.println("********************************");
+        System.out.println("************ATM SERVICES********");
+        System.out.println("________________________________");
+        System.out.println("1. Check balance");
+        System.out.println("2. Deposit");
+        System.out.println("3. Check withdraw");
+        System.out.println("4. Transfer cash");
+        System.out.println("5. Quit");
 
     }
     public void checkBalance(){
