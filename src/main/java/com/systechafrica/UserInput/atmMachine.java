@@ -4,95 +4,75 @@ package com.systechafrica.UserInput;
 import java.util.Scanner;
 
 public class AtmMachine {
+    final double INITIAL_BALANCE = 1000.00;
+    final double WITHDRAWAL_CHARGES = 0.02;
+    final String DEFAULT_PASSWORD = "Admin123";
+    double runningBalance = INITIAL_BALANCE;
+    Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-     
-    final String User_name = "Emily";
-    final String User_password = "Kamiti101";
-    int attempts = 0;
 
-    
-    double accountBalance = 1000;
-    Scanner scanner = new Scanner(System.in); 
+        AtmMachine app = new AtmMachine();
+        boolean loggedIn = app.login();
+        if(loggedIn) {
+            System.out.println("Successfully logged in");
+            // show menu
+        }else{
+            System.out.println("Maximum attempts failed");
+        }
+    }
+    public boolean login(){
+        //? Try three times and, exit if not logged in
+        int loginEntries = 1;
+        boolean loggedIn = false;
+        while(loginEntries <= 3){
+            System.out.println("Enter your password: ");
+            String userPasssword = scanner.nextLine();
+            if(userPasssword.equals(DEFAULT_PASSWORD)){
 
-        while(attempts < 3){
-            System.out.println("Tell the Scanner your secret:");
-            System.out.print("Your name: ");
-            String nameInput = scanner.nextLine();
-            System.out.print("Your Password: ");
-            String passInput = scanner.nextLine();
-            
-            
-            if (nameInput.equals(User_name) && passInput.equals(User_password )){
-                
-                System.out.println("Successful");
+                // show menu
+                loggedIn = true;
                 break;
-            } else {
-                System.out.println("Not right, Try again!");
-                attempts++;
-                
             }
+            System.out.println("Wrong password");
+            loginEntries++; // logignEntries = loginEntries+1;
+            
+
         }
-            if (attempts == 3){
-                System.err.println("You number of attempts is over.");
-                scanner.close();
-                return;
-        }
-
-        while (true) {
-            System.out.println("\n***************");
-            System.out.println("ATM SIMULATOR");
-            System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
-            System.out.println("ATM SERVICES\n");
-            System.out.println("__________________");
-            System.out.println("1. Check Balance");
-            System.out.println("2. Deposit");
-            System.out.println("3. Withdraw");
-            System.out.println("4. Transfer Cash");
-            System.out.println("5. Quit");
-
-            System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
-
-            System.out.println("Please select an option");
-            final int select_option = scanner.nextInt();
-
-            switch (select_option) {
-                case 1:
-                    System.out.println("Your account balance is ksh. " + accountBalance);
-                    break;
-                case 2:
-                    System.out.print("Enter deposit  ");
-                    double amountToDeposit = scanner.nextDouble();
-                    accountBalance += amountToDeposit;
-                    System.out.print("Your new account balance is ksh. " + accountBalance);
-                    break;
-                case 3:
-                    System.out.print("Enter the amount you want to withdraw: ");
-                    double amountWithdraw = scanner.nextDouble();
-                    double ChargesForWithdraw = amountWithdraw * 0.02;
-                    
-                    if (amountWithdraw + ChargesForWithdraw < accountBalance) {
-                        accountBalance -= (amountWithdraw + ChargesForWithdraw);
-                        System.out.print("You have successfully withdrawn ksh. " + amountWithdraw +
-                                         ". New balance is ksh. " + accountBalance);
-                    } else {
-                        System.out.print("Insufficient Balance, Your account balance is ksh. " + accountBalance);
-                    }
-                    break;
-                case 4:
-                    System.out.print("Service not wworking at a moment");
-                    break;
-                case 5:
-                    scanner.close();
-                    return;
-                default:
-                    System.out.print("Please enter valid input");
-                    break;
-            }
-        }
+        return loggedIn;
     }
 
+    public void displayMenu(){
 
     }
+    public void checkBalance(){
+        System.out.println("You balance is:" + runningBalance);
 
+    }
+    public void performDeposit(){
+        //? get the amount to deposit
+
+        double amountToDeposit = scanner.nextDouble(); 
+        //? add the amount to the balance
+        runningBalance += amountToDeposit; // runningBalance = runningBalance+ amountToDeposit
+
+    }
+    public void performWithdrawal(){
+        //? get the amount to withdraw
+        //? calculate the amount to withdraw + charges
+        //? check if running balance is sufficient
+
+    }
+    public void performTransfer(){
+        // ? get the amount to withdraw
+        //? subtract the amount from the balance
+
+    }
+    public void printReceipt(){
+        // you can print the information about the transation
+
+    }
     
-
+    
+}
+     
+    
