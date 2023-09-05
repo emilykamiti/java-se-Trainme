@@ -1,0 +1,45 @@
+package com.systechafrica.LoopingStatements;
+
+import java.util.Scanner;
+
+public class MoreLoops {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // ? using the while loop
+        // int n = scanner.nextInt();
+        // while (n < 1 || n > 10) { // if condition is truen, execute
+        // System.out.print(n + " is not betwwen 1 and 10. Try again");
+        // n = scanner.nextInt();
+
+        // }
+
+        // System.out.println(n + "is between 1 and 10");
+        // }
+    // 
+
+    // !compasion between while and do while
+
+    // ?while... 0 Iterations
+    // int i = 100;
+    // while(i <= 5) {
+    // System.out.println("hello" + i);
+    // i++;
+    // }
+
+    // ? do while loop...one Iteration
+    // int i = 100;
+    // do {
+    // System.out.println("Hello" + i);
+    // i++;
+    // } while(i <= 5);
+
+    // using a do while loop
+    int n;
+    do {
+    System.out.print("enter a number between 1 and 10: ");
+        n = scanner.nextInt();
+
+    } while(n<1||n>10);
+        System.out.println(n + "is between 1 and 10");
+} 
+}
