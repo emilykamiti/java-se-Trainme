@@ -88,17 +88,39 @@ public class AtmMachine {
 
     public void performDeposit() {
         // ? get the amount to deposit
-
+        System.out.println("Enter amount to deposit");
         double amountToDeposit = scanner.nextDouble();
-        // ? add the amount to the balance
-        runningBalance += amountToDeposit; // runningBalance = runningBalance+ amountToDeposit
+        if (amountToDeposit > 0){
+            // ? add the amount to the balance
+            runningBalance += amountToDeposit; // runningBalance = runningBalance+ amountToDeposit
+
+            System.out.println("Deposit successful. New Balance: " + runningBalance);
+        }else{
+            System.out.println("Invalid input");
+        }
 
     }
 
     public void performWithdrawal() {
         // ? get the amount to withdraw
+        System.out.println("Enter amount to withdraw: ");
+        double amountToWithdraw = scanner.nextDouble();
         // ? calculate the amount to withdraw + charges
+        if (amountToWithdraw > 0) {
+            double totalWithdrawal = amountToWithdraw + (WITHDRAWAL_CHARGES * amountToWithdraw); 
+            
         // ? check if running balance is sufficient
+        if (totalWithdrawal <= runningBalance){
+            runningBalance -= totalWithdrawal;
+            System.out.println("Withdrawal successful, New balance: " + runningBalance);
+        } else {
+            System.out.println("Insufficient funds. ");
+        }
+        }else {
+            System.out.println("Invalid withdrawal input. Enter valid amount: ");
+        }
+        
+
 
     }
 
