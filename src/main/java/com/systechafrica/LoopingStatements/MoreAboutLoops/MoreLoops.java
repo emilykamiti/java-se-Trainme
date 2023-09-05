@@ -1,10 +1,12 @@
-package com.systechafrica.LoopingStatements;
+package com.systechafrica.LoopingStatements.MoreAboutLoops;
 
 import java.util.Scanner;
 
 public class MoreLoops {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        //? Cndition comes first
         // ? using the while loop
         // int n = scanner.nextInt();
         // while (n < 1 || n > 10) { // if condition is truen, execute
@@ -34,6 +36,7 @@ public class MoreLoops {
     // } while(i <= 5);
 
     // using a do while loop
+    //Condition comes later, execuion first.
     int n;
     do {
     System.out.print("enter a number between 1 and 10: ");
