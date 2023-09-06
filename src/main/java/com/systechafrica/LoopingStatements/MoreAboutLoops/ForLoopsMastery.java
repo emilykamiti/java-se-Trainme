@@ -20,6 +20,9 @@ public class ForLoopsMastery {
 
         int i = 1;
         for (; i <= 5; i++) {
+            if(i == 3){
+                break;
+            }
             System.out.println("Hello: " + i);
 
         }
