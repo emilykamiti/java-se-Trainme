@@ -1,4 +1,4 @@
-package com.systechafrica.Part2;
+package com.systechafrica.Part2.Classes;
 
 import java.util.logging.Logger;
 
@@ -8,24 +8,26 @@ public class Intern {
     String phoneNumber;
     String email;
 
-    public Intern(String name, String phoneNumber, String email){
+    public Intern(String name, String phoneNumber, String email) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.doAssignments();
 
     }
-    public Intern(){
+
+    public Intern() {
 
     }
 
-    public void attendClass(){
+    public void attendClass() {
         LOGGER.info("Attended Class");
 
     }
-    public void doAssignments(){
+
+    public void doAssignments() {
         LOGGER.info("Do assigments");
-        
+
     }
-    
+
 }

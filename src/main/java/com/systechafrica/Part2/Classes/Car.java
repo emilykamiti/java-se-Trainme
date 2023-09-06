@@ -1,4 +1,4 @@
-package com.systechafrica.Part2;
+package com.systechafrica.Part2.Classes;
 
 public class Car {
     // Instance Variables
@@ -9,9 +9,10 @@ public class Car {
         System.out.println("Engine Started!");
 
     }
-    void accelerate(){
+
+    void accelerate() {
         speed += 10;
-        System.out.println("Speed Increased is " + speed +"km/hr");
+        System.out.println("Speed Increased is " + speed + "km/hr");
     }
 
 }
