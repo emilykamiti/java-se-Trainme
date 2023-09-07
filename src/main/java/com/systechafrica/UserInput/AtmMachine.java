@@ -6,7 +6,6 @@ public class AtmMachine {
     final double INITIAL_BALANCE = 1000.00;
     final double WITHDRAWAL_CHARGES = 0.02;
     final String DEFAULT_PASSWORD = "Admin123";
-    final String USER_NAME = "Nasinza";
     double runningBalance = INITIAL_BALANCE;
     Scanner scanner = new Scanner(System.in);
 
@@ -53,11 +52,9 @@ public class AtmMachine {
         int loginEntries = 1;
         boolean loggedIn = false;
         while (loginEntries <= 3) {
-            System.out.println( "Enter you name: ");
-            String userName = scanner.nextLine();
             System.out.print("Enter your password: ");
             String userPasssword = scanner.nextLine();
-            if (userPasssword.equals(DEFAULT_PASSWORD ) && userName.equals(USER_NAME) ) {
+            if (userPasssword.equals(DEFAULT_PASSWORD )) {
 
                 // show menu
                 loggedIn = true;
