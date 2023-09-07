@@ -38,7 +38,7 @@ public class AtmMachine {
                     keepShowingMenu = false;
 
                 } else {
-                    System.out.println("Invalid opton ...try again");
+                    System.out.println("Invalid option ...try again");
 
                 }
             }
