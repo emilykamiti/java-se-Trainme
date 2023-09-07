@@ -6,6 +6,7 @@ public class AtmMachine {
     final double INITIAL_BALANCE = 1000.00;
     final double WITHDRAWAL_CHARGES = 0.02;
     final String DEFAULT_PASSWORD = "Admin123";
+    final String USER_NAME = "Nasinza";
     double runningBalance = INITIAL_BALANCE;
     Scanner scanner = new Scanner(System.in);
 
@@ -52,9 +53,11 @@ public class AtmMachine {
         int loginEntries = 1;
         boolean loggedIn = false;
         while (loginEntries <= 3) {
-            System.out.println("Enter your password: ");
+            System.out.println( "Enter you name: ");
+            String userName = scanner.nextLine();
+            System.out.print("Enter your password: ");
             String userPasssword = scanner.nextLine();
-            if (userPasssword.equals(DEFAULT_PASSWORD)) {
+            if (userPasssword.equals(DEFAULT_PASSWORD ) && userName.equals(USER_NAME) ) {
 
                 // show menu
                 loggedIn = true;
@@ -124,12 +127,22 @@ public class AtmMachine {
 
     public void performTransfer() {
         // ? get the amount to withdraw
+        System.out.println("Enter amount to transfer: ");
+        double amountToTransfer = scanner.nextDouble();
         // ? subtract the amount from the balance
+
+        if (amountToTransfer > 0 && amountToTransfer <= runningBalance) {
+            runningBalance -= amountToTransfer;
+            System.out.println("Tansfer succesfull, new balance: " + runningBalance);
+
+        } else {
+            System.out.println("Insufficient funds");
+        }
 
     }
 
     public void printReceipt() {
-        // you can print the information about the transation
+        System.out.println();
 
     }
 
