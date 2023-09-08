@@ -1,42 +1,34 @@
 package com.systechafrica.possalessystem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SaleSystem {
-    final String USER_PASSWORD = "Admin123";
-    Scanner scanner = new Scanner(System.in);
+    private final String USER_PASSWORD = "Admin123";
+    private Scanner scanner = new Scanner(System.in);
+    private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
 
     public static void main(String[] args) {
         SaleSystem sys = new SaleSystem();
         boolean loggedIn = sys.login();
-        if(loggedIn){
+        if (loggedIn) {
             System.out.println("Successful login!");
 
             boolean showingOutput = true;
-            while(showingOutput){
+            while (showingOutput) {
                 sys.displayOutput();
                 int option = sys.scanner.nextInt();
                 sys.scanner.nextLine();
 
-                if (option == 1){
+                if (option == 1) {
                     sys.addItem();
-                    boolean addingItem = true;
-                    while(addingItem){
-                        System.out.println( "Type add to add item and 'N' to not add any");
-                        String addItem = sys.scanner.nextLine();
-                        if(addItem.equals("add")){
-                            sys.addItem();
-                        } else if (addItem.equals("N")){
-                            addingItem = false;
-                        } else{
-                            System.out.println("Invalid input. Type 'add' to add another item or N to exit");
-                        }}
-                } else if (option == 2){
+                } else if (option == 2) {
                     sys.makepayment();
-                } else if (option == 3){
+                } else if (option == 3) {
                     sys.displayReceipt();
                 } else {
-                System.out.println("Invalid option");
+                    System.out.println("Invalid option");
                 }
             }
         }
@@ -54,8 +46,8 @@ public class SaleSystem {
                 break;
             }
             System.out.println("Wrong password");
-            loginAttempts = loginAttempts + 1; // logginAttempts++
-           //! loginAttempts to check later
+            loginAttempts = loginAttempts + 1; // loginAttempts++
+            // ! loginAttempts to check later
 
         }
         return loggedIn;
@@ -75,12 +67,39 @@ public class SaleSystem {
     }
 
     public void addItem() {
-        
+        System.out.println("Input Item Code:");
+        String itemCode = scanner.nextLine();
 
+        System.out.println("Input Quantity:");
+        int quantity = scanner.nextInt();
+
+        System.out.println("Input price per item");
+        double pricePerItem = scanner.nextDouble();
+
+        double totalValue = quantity * pricePerItem;
+        listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
+
+        scanner.nextLine();
+
+        System.out.println("Item added successfully! ");
+
+        System.out.println("To add another item type 'add if not type N to exit" );
+        String addItem = scanner.nextLine();
+        if(addItem.equalsIgnoreCase("add")){
+
+        } else if (addItem.equals("N")){
+            boolean addingItem = false;
+        } else{
+            System.out.println("Invalid input. Type 'add' to add another item or N to exit");
+        }
     }
 
-    public void makepayment() {
-        //clickpayment and access options.
+public void makePayment(){
+        //clickpayment and access optin.
+        System.out.println("Item Code" + " "+ "Quantity"+ " "+ "unit Price"+ " " + "T
+
+    System.out.println("_____________________________________________________");
+        double totalValue = 0;
 
     }
 
