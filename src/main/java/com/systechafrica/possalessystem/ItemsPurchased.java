@@ -27,7 +27,7 @@ public class ItemsPurchased {
         return pricePerItem;
     }
 
-    public double getpriceTotalValue() {
+    public double getTotalValue() {
         return totalValue;
     }
 }

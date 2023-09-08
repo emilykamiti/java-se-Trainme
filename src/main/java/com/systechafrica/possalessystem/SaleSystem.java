@@ -24,7 +24,7 @@ public class SaleSystem {
                 if (option == 1) {
                     sys.addItem();
                 } else if (option == 2) {
-                    sys.makepayment();
+                    sys.makePayment();
                 } else if (option == 3) {
                     sys.displayReceipt();
                 } else {
@@ -54,7 +54,7 @@ public class SaleSystem {
     }
 
     public void displayOutput() {
-        System.out.println("__________________");
+        System.out.println("*******************");
         System.out.println("SYSTECH POS SYSTEM");
         System.out.println("__________________");
         System.out.println("1. ADD ITEM");
@@ -83,29 +83,52 @@ public class SaleSystem {
 
         System.out.println("Item added successfully! ");
 
-        System.out.println("To add another item type 'add if not type N to exit" );
+        System.out.println("To add another item type 'add if not type N to exit");
         String addItem = scanner.nextLine();
-        if(addItem.equalsIgnoreCase("add")){
-
-        } else if (addItem.equals("N")){
-            boolean addingItem = false;
-        } else{
-            System.out.println("Invalid input. Type 'add' to add another item or N to exit");
+        if (addItem.equalsIgnoreCase("add")) {
+            return;
         }
     }
 
-public void makePayment(){
-        //clickpayment and access optin.
-        System.out.println("Item Code" + " "+ "Quantity"+ " "+ "unit Price"+ " " + "T
+    public void makePayment() {
+        System.out.println("Item Code      Quantity      Unit Price      Total Value");
+        double total = 0.0;
 
-    System.out.println("_____________________________________________________");
-        double totalValue = 0;
+        for (ItemsPurchased item : listOfItemsPurchased) {
+            System.out.println(item.getItemCode() + "\t\t" + item.getQuantity() + "\t\t" + item.getpricePerItem()
+                    + "\t\t" + item.getTotalValue());
+            total += item.getTotalValue();
+        }
 
+        System.out.println("***********************************");
+        System.out.println("Total:\t\t\t\t" + total);
+
+        System.out.println("Enter the amount given by Customer:");
+        double amountGiven = scanner.nextDouble();
+
+        double change = amountGiven - total;
+        System.out.println("Change:\t\t\t\t" + change);
     }
 
-    public void displayReceipt() {
-        System.out.println();
+    private void displayReceipt() {
+        System.out.println("Item Code      Quantity      Unit Price      Total Value");
+        for (ItemsPurchased item : listOfItemsPurchased) {
+            System.out.println(item.getItemCode() + "\t\t" + item.getQuantity() + "\t\t" + item.getpricePerItem()
+                    + "\t\t" + item.getTotalValue());
+        }
 
+        System.out.println("*********************************************************");
+        double total = 0.0;
+        for (ItemsPurchased item : listOfItemsPurchased) {
+            total += item.getTotalValue();
+        }
+        System.out.println("Total:\t\t\t\t" + total);
+
+        System.out.println("**********************************************************");
+        System.out.println("THANK YOU FOR SHOPPING WITH US");
+        System.out.println("**********************************************************");
+        listOfItemsPurchased.clear();
+        System.exit(0);
     }
 
 }
