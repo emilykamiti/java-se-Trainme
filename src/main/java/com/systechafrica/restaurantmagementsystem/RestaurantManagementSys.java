@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RestaurantManagementSys {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
     private List<Drinks> drinksMenu = new ArrayList<>();
     private List<Meals> mealsMenu = new ArrayList<>();
@@ -47,22 +47,19 @@ public class RestaurantManagementSys {
                 } else {
                     System.out.println("Invalid input");
                 }
+            }
 
-            }
-            while (true) {
-                System.out.print("Do you want to enter another meal/drink option (Y/N)? ");
-                String addAnotherItem = restaurantms.scanner.nextLine();
-                if (addAnotherItem.equalsIgnoreCase("Y")) {
-                } else if (addAnotherItem.equalsIgnoreCase("N")) {
-                    restaurantms.displayPayment();
-                    break; 
-                } else {
-                    System.out.println("Invalid input. Please enter 'Y' or 'N'.");
-                }
-            }
-            
+            System.out.println("Item added successfully! ");
+
+            System.out.println("Do you want to add a meal/drink: Y");
+            String addItem = scanner.nextLine();
+            if (addItem.equalsIgnoreCase("Y")) {
+
+            } else if (!addItem.equalsIgnoreCase("N"))
+                ;
+
         }
-            
+
     }
 
     private void addItem(String string, int i) {
