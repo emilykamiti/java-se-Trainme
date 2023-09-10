@@ -3,6 +3,8 @@ package com.systechafrica.Arrays;
 import java.util.ArrayList;
 
 public class ArraysPro {
+
+    // add ,remove, clear, contains
     public static void main(String[] args) {
         String[] fruits = new String[5]; //change size when you add or remove an item
         fruits[0] = "Pawpaw";
@@ -15,11 +17,11 @@ public class ArraysPro {
     
 
         //array list is more flexible
-        ArrayList fruitList = new ArrayList();
-        fruitList.add("Pawpaw");
+        ArrayList fruitList = new ArrayList(); 
         fruitList.add("Mango");
         fruitList.add("Banana");
         fruitList.add("Oranges");
+        fruitList.add("apples");
         fruitList.add("Watermelon"); //automatically added this
         
         fruitList.remove("Pawpaw");
