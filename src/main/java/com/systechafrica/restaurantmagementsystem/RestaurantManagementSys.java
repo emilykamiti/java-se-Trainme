@@ -49,21 +49,20 @@ public class RestaurantManagementSys {
                 }
 
             }
-
-            if (restaurantms.mealsMenu.isEmpty() || !restaurantms.drinksMenu.isEmpty()) {
-                System.out.println("Continue to payment");
-                String continuetoPayment = restaurantms.scanner.nextLine();
-                if (continuetoPayment.equalsIgnoreCase("Y")) {
+            while (true) {
+                System.out.print("Do you want to enter another meal/drink option (Y/N)? ");
+                String addAnotherItem = restaurantms.scanner.nextLine();
+                if (addAnotherItem.equalsIgnoreCase("Y")) {
+                } else if (addAnotherItem.equalsIgnoreCase("N")) {
                     restaurantms.displayPayment();
+                    break; 
                 } else {
-                    System.out.println("Cannot continue with payment");
+                    System.out.println("Invalid input. Please enter 'Y' or 'N'.");
                 }
-            } else {
-                System.out.println("No items picked");
             }
-        } else {
-            System.out.println("Maximum Login attempts reached, try again");
+            
         }
+            
     }
 
     private void addItem(String string, int i) {
@@ -88,7 +87,7 @@ public class RestaurantManagementSys {
 
     }
 
-    public void MealsandDrinksmenu() {
+    public void mealsAndDrinksmenu() {
         drinksMenu.add(new Drinks("CHAI", 15.0));
         drinksMenu.add(new Drinks("ANDAZI", 15.0));
         drinksMenu.add(new Drinks("TOSTI", 15.0));
@@ -98,31 +97,55 @@ public class RestaurantManagementSys {
 
     }
 
-    public void orderedItems() {
-
+    public void addItem(String name, double price) {
+        mealsMenu.add(new Meals(name, price));
+        drinksMenu.add(new Drinks(name, price));
     }
 
     public void displayMenu() {
-        System.out.println("********************");
-        System.out.println(" SYSTECH RESTAURANT");
-
+        System.out.println("--------------------");
+        System.out.println("SYSTECH RESTAURANT");
+        System.out.println("");
         System.out.println("DRINKS");
         System.out.println("********************");
-        System.out.println("1. CHAI__________________________________");
-        System.out.println("1. ANDAZI________________________________");
-        System.out.println("1. TOSTI_________________________________");
-
+        System.out.println("1. CHAI----------------------------------15");
+        System.out.println("2. ANDAZI--------------------------------10");
+        System.out.println("3. TOSTI---------------------------------12");
+        System.out.println("");
         System.out.println("MEALS");
         System.out.println("********************");
-        System.out.println("NDEGU AND ACCOMPLISHMENTS________________");
-        System.out.println("BEANS AND ACCOMPLISHMENTS________________");
-        System.out.println("PILAU VEG________________________________");
-        System.out.println("7. QUIT__________________________________");
+        System.out.println("4.NDEGU AND ACCOMPANIMENTS----------------70");
+        System.out.println("5.BEANS AND ACCOMPANIMENTS----------------70");
+        System.out.println("6.PILAU VEG--------------------------------90");
+        System.out.println("7.Quit");
 
     }
 
     public void displayPayment() {
+        double total = 0.0;
+        System.out.println("Pay now for:");
 
+        for (Drinks drink : drinksMenu) {
+            System.out.println(drink.getName() + " " + drink.getPrice());
+            total += drink.getPrice();
+        }
+
+        for (Meals meal : mealsMenu) {
+            System.out.println(meal.getName() + " " + meal.getPrice());
+            total += meal.getPrice();
+        }
+        System.out.println("Total: " + total);
+
+        System.out.print("Enter amount to pay: ");
+        double amountToPay = scanner.nextDouble();
+        scanner.nextLine();
+
+        if (amountToPay >= total) {
+            double change = amountToPay - total;
+            System.out.println("Your balance is: " + change);
+        } else {
+            System.out.println("Amount paid is less than the total. cannot continue.");
+        }
     }
 
 }
