@@ -1,5 +1,6 @@
 package com.systechafrica.restaurantmagementsystem;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RestaurantManagementSys {
@@ -26,6 +27,20 @@ public class RestaurantManagementSys {
 
         }
         return loggedIn;
+    
     }
+{
+    System.out.println();
+    Drinks[] drinks = new Drinks[3];
+    drinks[0] = new Drinks("Chai", 15);
+    drinks[1] = new Drinks("Andazi", 10);
+    drinks[0] = new Drinks("Totsi", 12);
+
+    Meals[]meals = new Meals[3];
+    meals[0] = new Meals("Ndengu and Accomplishments", 70);
+    meals[0] = new Meals("Beans and Accomplishments", 70);
+    meals[0] = new Meals("Pilau Veg", 90);
+}
+
 
 }
