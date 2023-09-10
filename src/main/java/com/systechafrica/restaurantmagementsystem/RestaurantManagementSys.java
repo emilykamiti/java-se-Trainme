@@ -1,13 +1,15 @@
 package com.systechafrica.restaurantmagementsystem;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import com.systechafrica.possalessystem.ItemsPurchased;
 
 public class RestaurantManagementSys {
     Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
+    private List<Drinks> drinksMenu = new ArrayList<>();
+    private List<Meals> MealsMenu = new ArrayList<>();
+
 
     public static void main(String[] args) {
         RestaurantManagementSys restaurantms = new RestaurantManagementSys();
@@ -15,6 +17,7 @@ public class RestaurantManagementSys {
 
       
     }
+
 
     public boolean login() {
         int loginAttempts = 1;
@@ -35,6 +38,19 @@ public class RestaurantManagementSys {
 
     }
 
+    public void MealsandDrinksmenu(){
+        drinksMenu.add(new Drinks("CHAI", 15.0));
+        drinksMenu.add(new Drinks("ANDAZI", 15.0));
+        drinksMenu.add(new Drinks("TOSTI", 15.0));
+        MealsMenu.add(new Meals("NDEGU AND ACCOMPANIMENTS", 70.0));
+        MealsMenu.add(new Meals("BEANS AND ACCOMPANIMENTS", 70.0));
+        MealsMenu.add(new Meals("PILAU VEG", 90.0));
+    
+
+    }
+    public void Ordering(){
+        
+    }
     public void displayMenu() {
         System.out.println("********************");
         System.out.println(" SYSTECH RESTAURANT");
@@ -53,5 +69,6 @@ public class RestaurantManagementSys {
         System.out.println("7. QUIT__________________________________");
 
     }
+
 
 }
