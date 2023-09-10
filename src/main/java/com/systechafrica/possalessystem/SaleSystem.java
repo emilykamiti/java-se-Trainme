@@ -47,7 +47,6 @@ public class SaleSystem {
             }
             System.out.println("Wrong password");
             loginAttempts = loginAttempts + 1; // loginAttempts++
-            // ! loginAttempts to check later
 
         }
         return loggedIn;
