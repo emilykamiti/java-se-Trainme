@@ -3,12 +3,17 @@ package com.systechafrica.restaurantmagementsystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.systechafrica.possalessystem.ItemsPurchased;
+
 public class RestaurantManagementSys {
     Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
 
     public static void main(String[] args) {
+        RestaurantManagementSys restaurantms = new RestaurantManagementSys();
+        boolean loggedIn = restaurantms.login();
 
+      
     }
 
     public boolean login() {
@@ -27,20 +32,26 @@ public class RestaurantManagementSys {
 
         }
         return loggedIn;
-    
+
     }
-{
-    System.out.println();
-    Drinks[] drinks = new Drinks[3];
-    drinks[0] = new Drinks("Chai", 15);
-    drinks[1] = new Drinks("Andazi", 10);
-    drinks[0] = new Drinks("Totsi", 12);
 
-    Meals[]meals = new Meals[3];
-    meals[0] = new Meals("Ndengu and Accomplishments", 70);
-    meals[0] = new Meals("Beans and Accomplishments", 70);
-    meals[0] = new Meals("Pilau Veg", 90);
-}
+    public void displayMenu() {
+        System.out.println("********************");
+        System.out.println(" SYSTECH RESTAURANT");
 
+        System.out.println("DRINKS");
+        System.out.println("********************");
+        System.out.println("1. CHAI__________________________________");
+        System.out.println("1. ANDAZI________________________________");
+        System.out.println("1. TOSTI_________________________________");
+
+        System.out.println("MEALS");
+        System.out.println("********************");
+        System.out.println("NDEGU AND ACCOMPLISHMENTS________________");
+        System.out.println("BEANS AND ACCOMPLISHMENTS________________");
+        System.out.println("PILAU VEG________________________________");
+        System.out.println("7. QUIT__________________________________");
+
+    }
 
 }
