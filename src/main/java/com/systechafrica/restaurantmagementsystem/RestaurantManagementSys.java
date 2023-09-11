@@ -24,7 +24,7 @@ public class RestaurantManagementSys {
             while (showingOutput) {
                 restaurantms.displayMenu();
                 int option = scanner.nextInt();
-               scanner.nextLine();
+                scanner.nextLine();
 
                 if (option == 1) {
                     restaurantms.addItem("Chai", 15, "drink");
@@ -51,19 +51,19 @@ public class RestaurantManagementSys {
                     System.out.println("Invalid input");
                 }
 
-                 if (showingOutput) {
-                System.out.println("Do you want to add another item (Y/N)?");
-                String addAnotherItem = scanner.nextLine();
-                if (addAnotherItem.equalsIgnoreCase("N")) {
-                    restaurantms.displayPayment();
-                    showingOutput = false;
-                } else if (!addAnotherItem.equalsIgnoreCase("Y")) {
-                    System.out.println("Invalid input. Please enter 'Y' or 'N'.");
+                if (showingOutput) {
+                    System.out.println("Do you want to add another item (Y/N)?");
+                    String addAnotherItem = scanner.nextLine();
+                    if (addAnotherItem.equalsIgnoreCase("N")) {
+                        restaurantms.displayPayment();
+                        showingOutput = false;
+                    } else if (!addAnotherItem.equalsIgnoreCase("Y")) {
+                        System.out.println("Invalid input. Please enter 'Y' or 'N'.");
+                    }
                 }
             }
         }
     }
-}
 
     public boolean login() {
         int loginAttempts = 1;
@@ -95,18 +95,15 @@ public class RestaurantManagementSys {
     }
 
     public void addItem(String name, double price, String type) {
-    
+
         if ("drink".equalsIgnoreCase(type)) {
-         
+
             orderedDrinks.add(new Drinks(name, price));
         } else if ("meal".equalsIgnoreCase(type)) {
-          
+
             orderedMeals.add(new Meals(name, price));
         }
     }
-
-
-
 
     public void displayMenu() {
         System.out.println("--------------------");

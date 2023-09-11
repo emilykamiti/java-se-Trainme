@@ -4,19 +4,50 @@ public class Person {
     private String name;
     private String email;
 
-    // @Override
-    // public String toString() {
-    // return email + " " + name;
-    // }
+    private boolean promoted;
+    //click alt and enter
+    //setters and getters
+
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void setEmail(String email){
+        this.email = email;
+
+    }
+    public String getEmailString(){
+        return this.email;
+    }
+
+
+    public Person(String name, String email){
+        this.name = name;
+        this.email = email;
+
+    }
+    public Person(){
+
+    }
     public void printPersonalDetails() {
         System.out.println(email + " " + name);
     }
 
-    public static void main(String[] args) {
-        Person person = new Person();
-        person.name = " Emily";
-        person.email = " emilykamiti@gmail.com";
-        person.printPersonalDetails();
-    }
+   public String getPersonalDetails(){
+    return email +  "" + name;
+    
 
+   }
+public String getEmail() {
+    return email;
 }
+public boolean isPromoted() {
+    return promoted;
+}
+public void setPromoted(boolean promoted) {
+    this.promoted = promoted;
+}
+}
+
