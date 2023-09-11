@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RestaurantManagementSys {
-    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
     private List<Drinks> drinksMenu = new ArrayList<>();
     private List<Meals> mealsMenu = new ArrayList<>();
@@ -13,6 +13,8 @@ public class RestaurantManagementSys {
     public static void main(String[] args) {
         RestaurantManagementSys restaurantms = new RestaurantManagementSys();
         boolean loggedIn = restaurantms.login();
+        restaurantms.mealsAndDrinksmenu(); 
+
 
         if (loggedIn) {
             System.out.println("Welcome to Sytech restaurant!");
