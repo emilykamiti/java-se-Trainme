@@ -5,16 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RestaurantManagementSys {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
     private List<Drinks> drinksMenu = new ArrayList<>();
     private List<Meals> mealsMenu = new ArrayList<>();
 
+    private List<Drinks> orderedDrinks = new ArrayList<>();
+    private List<Meals> orderedMeals = new ArrayList<>();
+
     public static void main(String[] args) {
         RestaurantManagementSys restaurantms = new RestaurantManagementSys();
         boolean loggedIn = restaurantms.login();
-        restaurantms.mealsAndDrinksmenu(); 
-
 
         if (loggedIn) {
             System.out.println("Welcome to Sytech restaurant!");
@@ -22,26 +23,26 @@ public class RestaurantManagementSys {
             boolean showingOutput = true;
             while (showingOutput) {
                 restaurantms.displayMenu();
-                int option = restaurantms.scanner.nextInt();
-                restaurantms.scanner.nextLine();
+                int option = scanner.nextInt();
+               scanner.nextLine();
 
                 if (option == 1) {
-                    restaurantms.addItem("Chai", 15);
+                    restaurantms.addItem("Chai", 15, "drink");
 
                 } else if (option == 2) {
-                    restaurantms.addItem("Andazi", 10);
+                    restaurantms.addItem("Andazi", 10, "drink");
 
                 } else if (option == 3) {
-                    restaurantms.addItem("Tosti", 12);
+                    restaurantms.addItem("Tosti", 12, "drink");
 
                 } else if (option == 4) {
-                    restaurantms.addItem("Ndegu And Accompaniments", 70);
+                    restaurantms.addItem("Ndegu And Accompaniments", 70, "meal");
 
                 } else if (option == 5) {
-                    restaurantms.addItem("Beans And Accompaniments", 70);
+                    restaurantms.addItem("Beans And Accompaniments", 70, "meal");
 
                 } else if (option == 6) {
-                    restaurantms.addItem("Pilau Veg", 90);
+                    restaurantms.addItem("Pilau Veg", 90, "meal");
 
                 } else if (option == 7) {
                     return;
@@ -49,10 +50,10 @@ public class RestaurantManagementSys {
                 } else {
                     System.out.println("Invalid input");
                 }
-            }
-            if (showingOutput) {
+
+                 if (showingOutput) {
                 System.out.println("Do you want to add another item (Y/N)?");
-                String addAnotherItem = restaurantms.scanner.nextLine();
+                String addAnotherItem = scanner.nextLine();
                 if (addAnotherItem.equalsIgnoreCase("N")) {
                     restaurantms.displayPayment();
                     showingOutput = false;
@@ -60,25 +61,9 @@ public class RestaurantManagementSys {
                     System.out.println("Invalid input. Please enter 'Y' or 'N'.");
                 }
             }
-
-        }            
-        if (!restaurantms.mealsMenu.isEmpty() || !restaurantms.drinksMenu.isEmpty()) {
-            System.out.println("Proceed to payment (Y/N)?");
-            String continueToPayment = restaurantms.scanner.nextLine();
-            if (continueToPayment.equalsIgnoreCase("Y")) {
-                restaurantms.displayPayment();
-            } else {
-                System.out.println("Payment process aborted.");
-            }
-        } else {
-            System.out.println("No items picked.");
         }
-        }
-
-    
-
-    private void addItem(String string, int i) {
     }
+}
 
     public boolean login() {
         int loginAttempts = 1;
@@ -109,10 +94,19 @@ public class RestaurantManagementSys {
 
     }
 
-    public void addItem(String name, double price) {
-        mealsMenu.add(new Meals(name, price));
-        drinksMenu.add(new Drinks(name, price));
+    public void addItem(String name, double price, String type) {
+    
+        if ("drink".equalsIgnoreCase(type)) {
+         
+            orderedDrinks.add(new Drinks(name, price));
+        } else if ("meal".equalsIgnoreCase(type)) {
+          
+            orderedMeals.add(new Meals(name, price));
+        }
     }
+
+
+
 
     public void displayMenu() {
         System.out.println("--------------------");
@@ -137,12 +131,12 @@ public class RestaurantManagementSys {
         double total = 0.0;
         System.out.println("Pay now for:");
 
-        for (Drinks drink : drinksMenu) {
+        for (Drinks drink : orderedDrinks) {
             System.out.println(drink.getName() + " " + drink.getPrice());
             total += drink.getPrice();
         }
 
-        for (Meals meal : mealsMenu) {
+        for (Meals meal : orderedMeals) {
             System.out.println(meal.getName() + " " + meal.getPrice());
             total += meal.getPrice();
         }

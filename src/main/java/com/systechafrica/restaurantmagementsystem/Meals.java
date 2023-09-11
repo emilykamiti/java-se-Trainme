@@ -1,6 +1,8 @@
 package com.systechafrica.restaurantmagementsystem;
 
-public class Meals {
+public class Meals{
+    
+
     private String name;
     private double price;
 
@@ -17,6 +19,6 @@ public class Meals {
     public double getPrice(){
         return price;
     }
+
+    
 }
-    
-    

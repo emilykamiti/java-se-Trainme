@@ -1,6 +1,6 @@
 package com.systechafrica.restaurantmagementsystem;
 
-public class Drinks {
+public class Drinks{
     
 
     private String name;
