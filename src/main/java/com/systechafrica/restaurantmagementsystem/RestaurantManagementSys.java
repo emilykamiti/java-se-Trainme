@@ -42,25 +42,38 @@ public class RestaurantManagementSys {
                     restaurantms.addItem("Pilau Veg", 90);
 
                 } else if (option == 7) {
-                    showingOutput = false;
+                    return;
 
                 } else {
                     System.out.println("Invalid input");
                 }
             }
+            if (showingOutput) {
+                System.out.println("Do you want to add another item (Y/N)?");
+                String addAnotherItem = restaurantms.scanner.nextLine();
+                if (addAnotherItem.equalsIgnoreCase("N")) {
+                    restaurantms.displayPayment();
+                    showingOutput = false;
+                } else if (!addAnotherItem.equalsIgnoreCase("Y")) {
+                    System.out.println("Invalid input. Please enter 'Y' or 'N'.");
+                }
+            }
 
-            System.out.println("Item added successfully! ");
-
-            System.out.println("Do you want to add a meal/drink: Y");
-            String addItem = scanner.nextLine();
-            if (addItem.equalsIgnoreCase("Y")) {
-
-            } else if (!addItem.equalsIgnoreCase("N"))
-                ;
-
+        }            
+        if (!restaurantms.mealsMenu.isEmpty() || !restaurantms.drinksMenu.isEmpty()) {
+            System.out.println("Proceed to payment (Y/N)?");
+            String continueToPayment = restaurantms.scanner.nextLine();
+            if (continueToPayment.equalsIgnoreCase("Y")) {
+                restaurantms.displayPayment();
+            } else {
+                System.out.println("Payment process aborted.");
+            }
+        } else {
+            System.out.println("No items picked.");
+        }
         }
 
-    }
+    
 
     private void addItem(String string, int i) {
     }
