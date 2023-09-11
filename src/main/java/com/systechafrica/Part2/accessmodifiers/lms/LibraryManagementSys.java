@@ -5,5 +5,6 @@ public abstract class LibraryManagementSys {
         Book book = new Book();
         book.isbn = " 8u368989740918-";
         book.title = "java programming";
+        book.printBookDetails();
     }
 }
