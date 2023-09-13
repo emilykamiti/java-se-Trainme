@@ -25,7 +25,7 @@ public void companySetup(){
     qa.setEmployeeName("Nasinza");
     qa.setEmployeeNo("002");
     qa.setEmployeeAddress("westlands");
-    qa.setTitle("Sotwareware Engineer in test");
+    qa.setTitle("Software Engineer in test");
     LOGGER.info("QualityAssurance => " +qa.toString());
 
 }

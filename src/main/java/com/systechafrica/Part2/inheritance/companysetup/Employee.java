@@ -23,7 +23,7 @@ public class Employee {
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
     }
-
+    @Override
         public String toString(){
             return "Name: " +  "@"  + employeeName + "No: " + employeeNo+"Address: " + employeeAddress;
     }

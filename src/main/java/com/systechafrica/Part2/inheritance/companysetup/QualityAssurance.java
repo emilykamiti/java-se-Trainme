@@ -10,6 +10,7 @@ public class QualityAssurance extends Employee{
     public void setTitle(String title){
         this.title = title;
     }
+    @Override
     public String toString(){
         return "Name: " +   getEmployeeName() + " No: " + getEmployeeNo()+" Address: " + getEmployeeAddress() +
         " Title: "+getTitle();
