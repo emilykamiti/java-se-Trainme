@@ -4,9 +4,6 @@ public class Book {
     private int isbn;
     private String title;
     private boolean available;
-    
-
-    
 
     public Book(int isbn, String title, boolean available) {
         this.isbn = isbn;
@@ -41,12 +38,12 @@ public class Book {
     @Override
     public boolean equals(Object obj) {
         // non-null check
-        if(obj ==null){
+        if (obj == null) {
             return false;
         }
         Book book = (Book) obj;
-        //covert the obj to the book instance
-        if(this.isbn== book.getIsbn()){
+        // covert the obj to the book instance
+        if (this.isbn == book.getIsbn()) {
             return true;
         }
         return false;
@@ -54,9 +51,8 @@ public class Book {
 
     @Override
     public int hashCode() {
-        
+
         return isbn;
     }
-    
-    
+
 }
