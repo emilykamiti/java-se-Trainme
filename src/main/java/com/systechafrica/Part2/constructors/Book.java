@@ -5,6 +5,7 @@ public class Book {
     private String title;
     private boolean available;
 
+    
     public Book(int isbn, String title, boolean available) {
         this.isbn = isbn;
         this.title = title;
