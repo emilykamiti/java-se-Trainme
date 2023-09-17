@@ -34,23 +34,7 @@ public class SaleSystem {
         }
     }
 
-    public boolean login() {
-        int loginAttempts = 1;
-        boolean loggedIn = false;
-
-        while (loginAttempts <= 3) {
-            System.out.println("Enter your password: ");
-            String userPassword = scanner.nextLine();
-            if (userPassword.equals(USER_PASSWORD)) {
-                loggedIn = true;
-                break;
-            }
-            System.out.println("Wrong password");
-            loginAttempts = loginAttempts + 1; // loginAttempts++
-
-        }
-        return loggedIn;
-    }
+  
 
     public void displayOutput() {
         System.out.println("*******************");
