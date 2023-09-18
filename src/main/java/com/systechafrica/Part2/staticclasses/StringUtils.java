@@ -12,7 +12,7 @@ public class StringUtils {
     public static boolean isEmpty(String s) {
         return s.isEmpty();
     }
-public static boolean length(String s) {
+public static int length(String s) {
         return s.length();
     }
 }
