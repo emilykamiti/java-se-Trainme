@@ -7,16 +7,17 @@ import com.systechafrica.Part2.inheritance.animals.Dog;
 public class CastingDemo {
     public static void main(String[] args) {
         CastingDemo app = new CastingDemo();
-        Animal animal = new Cat();
-        app.printInfo(animal);
-
+        Animal animal = new Dog(); 
+        app.printinfo(animal);                      // upcasting - implicit casting //! we only access the member variables, methods of animal class
+                                    //System.out.println(animal.printName()); 
             
         
+    
     }
-    public void printInfo(Animal animal){
+    public void printinfo(Animal animal){
+        //System.out.println(animal.printName());
         Dog dog = (Dog) animal;
-        dog.makeSound();
-
+        System.out.println(dog.printName());
     }
     
 }

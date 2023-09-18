@@ -34,7 +34,6 @@ public class SaleSystem {
         }
     }
 
-  
     public boolean login() {
         int loginAttempts = 1;
         boolean loggedIn = false;
@@ -53,10 +52,11 @@ public class SaleSystem {
         return loggedIn;
 
     }
+
     public void displayOutput() {
         System.out.println("*******************");
-        System.out.println("SYSTECH POS SYSTEM");
-        System.out.println("__________________");
+        System.out.println("SYSTECH POS SYSTEM" );
+        System.out.println("___________________");
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
         System.out.println("3. DISPLAY RECEIPT");
