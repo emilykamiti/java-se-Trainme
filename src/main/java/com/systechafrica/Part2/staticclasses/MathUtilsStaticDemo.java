@@ -10,7 +10,7 @@ public class MathUtilsStaticDemo {
         public static int add(int a, int b) {
             MathUtilsStaticDemo math = new MathUtilsStaticDemo();
             System.out.println(math.operationName); //! that to access the on-static member,
-            math.printInfo();  //! you need an object of the enclossing class
+            math.printInfo();  //! you need an obSject of the enclossing class
             return a + b;
         }
         
