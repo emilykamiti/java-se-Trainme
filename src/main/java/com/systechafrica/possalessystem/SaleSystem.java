@@ -3,6 +3,7 @@ package com.systechafrica.possalessystem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+ import com.systechafrica.UserInput.AtmMachine;
 
 public class SaleSystem {
     private final String USER_PASSWORD = "Admin123";
@@ -35,21 +36,8 @@ public class SaleSystem {
     }
 
     public boolean login() {
-        int loginAttempts = 1;
-        boolean loggedIn = false;
-
-        while (loginAttempts <= 3) {
-            System.out.println("Enter your password: ");
-            String userPassword = scanner.nextLine();
-            if (userPassword.equals(USER_PASSWORD)) {
-                loggedIn = true;
-                break;
-            }
-            System.out.println("Wrong password");
-            loginAttempts++;
-
-        }
-        return loggedIn;
+        AtmMachine app = new AtmMachine();
+        return app.login();
 
     }
 
