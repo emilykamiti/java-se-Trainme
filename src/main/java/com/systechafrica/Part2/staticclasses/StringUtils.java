@@ -15,4 +15,8 @@ public class StringUtils {
 public static int length(String s) {
         return s.length();
     }
+    
+    public static String trim(String s) {
+        return s.trim(); //  Emily  
+    }
 }
