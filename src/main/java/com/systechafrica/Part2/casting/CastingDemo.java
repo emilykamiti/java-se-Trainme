@@ -7,17 +7,29 @@ import com.systechafrica.Part2.inheritance.animals.Dog;
 public class CastingDemo {
     public static void main(String[] args) {
         CastingDemo app = new CastingDemo();
-        Animal animal = new Dog(); 
-        app.printinfo(animal);                      // upcasting - implicit casting //! we only access the member variables, methods of animal class
-                                    //System.out.println(animal.printName()); 
+        Animal animal = new Cat(); //?n1 up casting
+        Animal animal2 = new Dog(); //?n1 up casting
+        
+                                    //! we only access the member variables, methods of animal class             
+        app.printinfo(animal);
+        app.printinfo(animal2);
+                                        
+        //System.out.println(animal.printName()); n2 compilation fails as the method is only defined in the subclass
+        // Dog dog = new Animal(); .. compilation, dog is not a super class to the animal
             
         
     
     }
     public void printinfo(Animal animal){
-        //System.out.println(animal.printName());
-        Dog dog = (Dog) animal;
-        System.out.println(dog.printName());
+        if(animal instanceof Dog){
+
+    
+        Dog dog = (Dog) animal; //n2
+        System.out.println(dog.printName()); //n3
+        }else if( animal instanceof Cat){
+             Cat cat = (Cat) animal; 
+        System.out.println(cat.printName()); 
+        }
     }
     
 }
