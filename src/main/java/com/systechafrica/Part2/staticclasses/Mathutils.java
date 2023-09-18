@@ -1,7 +1,7 @@
 package com.systechafrica.Part2.staticclasses;
 
-public class MathUtils {
-    
+public class MathUtils{
+
     public static class Geometry {
         public static final double calculateArea(double x, double y) {
             return x * y;

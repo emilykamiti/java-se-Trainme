@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 import com.systechafrica.UserInput.AtmMachine;
 
-
 public class RestaurantManagementSys {
     static Scanner scanner = new Scanner(System.in);
     private final String USER_PASSWORD = "Admin123";
@@ -68,9 +67,8 @@ public class RestaurantManagementSys {
     }
 
     public boolean login() {
-            AtmMachine app = new AtmMachine();
-            return app.login();
-
+        AtmMachine app = new AtmMachine();
+        return app.login();
 
     }
 
