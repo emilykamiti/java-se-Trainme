@@ -13,6 +13,17 @@ public class MathUtils {
         
         public static int sum(int a , int b){
             return a + b;
+        
+        } public static int sum(int a , int b, int c){
+            return a + b +c;
+        }
+         public static int sum(int a , int b, int... numbers){
+            int sum = a+b;
+            for(int i = 0; i< numbers.length; i++){
+                sum+=numbers[i];
+
+            }
+            return sum;
         }
 }
 
