@@ -3,7 +3,7 @@ package com.systechafrica.possalessystem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
- import com.systechafrica.UserInput.AtmMachine;
+import com.systechafrica.UserInput.AtmMachine;
 
 public class SaleSystem {
     private final String USER_PASSWORD = "Admin123";
@@ -43,7 +43,7 @@ public class SaleSystem {
 
     public void displayOutput() {
         System.out.println("*******************");
-        System.out.println("SYSTECH POS SYSTEM" );
+        System.out.println("SYSTECH POS SYSTEM");
         System.out.println("___________________");
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
@@ -77,59 +77,56 @@ public class SaleSystem {
             return;
         }
     }
+
     public void makePayment() {
         System.out.println("Item Code   Quantity   Unit Price   Total Value");
         double total = 0.0;
-    
+
         for (ItemsPurchased item : listOfItemsPurchased) {
             System.out.printf(
-                "%-12s %-10s %-11s %-12s%n",
-                item.getItemCode(),
-                item.getQuantity(),
-                item.getpricePerItem(),
-                item.getTotalValue()
-            );
+                    "%-12s %-10s %-11s %-12s%n",
+                    item.getItemCode(),
+                    item.getQuantity(),
+                    item.getpricePerItem(),
+                    item.getTotalValue());
             total += item.getTotalValue();
         }
-    
+
         System.out.println("***********************************");
         System.out.printf("Total:%29.2f%n", total);
-    
+
         System.out.println("Enter the amount given by Customer:");
         double amountGiven = scanner.nextDouble();
-    
+
         double change = amountGiven - total;
         System.out.printf("Change:%28.2f%n", change);
     }
-    
+
     private void displayReceipt() {
         System.out.println("Item Code   Quantity   Unit Price   Total Value");
-    
+
         for (ItemsPurchased item : listOfItemsPurchased) {
             System.out.printf(
-                "%-12s %-10s %-11s %-12s%n",
-                item.getItemCode(),
-                item.getQuantity(),
-                item.getpricePerItem(),
-                item.getTotalValue()
-            );
+                    "%-12s %-10s %-11s %-12s%n",
+                    item.getItemCode(),
+                    item.getQuantity(),
+                    item.getpricePerItem(),
+                    item.getTotalValue());
         }
-    
-        System.out.println("*********************************************************");
+
+        System.out.println("****************************************************");
         double total = 0.0;
-    
+
         for (ItemsPurchased item : listOfItemsPurchased) {
             total += item.getTotalValue();
         }
-    
+
         System.out.printf("Total:%29.2f%n", total);
-    
-        System.out.println("**********************************************************");
+
+        System.out.println("*****************************************************");
         System.out.println("THANK YOU FOR SHOPPING WITH US");
-        System.out.println("**********************************************************");
+        System.out.println("*****************************************************");
         listOfItemsPurchased.clear();
         System.exit(0);
     }
 }
-
-    
