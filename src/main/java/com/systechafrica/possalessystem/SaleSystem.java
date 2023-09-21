@@ -77,46 +77,59 @@ public class SaleSystem {
             return;
         }
     }
-
     public void makePayment() {
-        System.out.println("Item Code      Quantity      Unit Price      Total Value");
+        System.out.println("Item Code   Quantity   Unit Price   Total Value");
         double total = 0.0;
-
+    
         for (ItemsPurchased item : listOfItemsPurchased) {
-            System.out.println(item.getItemCode() + "\t\t" + item.getQuantity() + "\t\t" + item.getpricePerItem()
-                    + "\t\t" + item.getTotalValue());
+            System.out.printf(
+                "%-12s %-10s %-11s %-12s%n",
+                item.getItemCode(),
+                item.getQuantity(),
+                item.getpricePerItem(),
+                item.getTotalValue()
+            );
             total += item.getTotalValue();
         }
-
+    
         System.out.println("***********************************");
-        System.out.println("Total:\t\t\t\t" + total);
-
+        System.out.printf("Total:%29.2f%n", total);
+    
         System.out.println("Enter the amount given by Customer:");
         double amountGiven = scanner.nextDouble();
-
+    
         double change = amountGiven - total;
-        System.out.println("Change:\t\t\t\t" + change);
+        System.out.printf("Change:%28.2f%n", change);
     }
-
+    
     private void displayReceipt() {
-        System.out.println("Item Code      Quantity      Unit Price      Total Value");
+        System.out.println("Item Code   Quantity   Unit Price   Total Value");
+    
         for (ItemsPurchased item : listOfItemsPurchased) {
-            System.out.println(item.getItemCode() + "\t\t" + item.getQuantity() + "\t\t" + item.getpricePerItem()
-                    + "\t\t" + item.getTotalValue());
+            System.out.printf(
+                "%-12s %-10s %-11s %-12s%n",
+                item.getItemCode(),
+                item.getQuantity(),
+                item.getpricePerItem(),
+                item.getTotalValue()
+            );
         }
-
+    
         System.out.println("*********************************************************");
         double total = 0.0;
+    
         for (ItemsPurchased item : listOfItemsPurchased) {
             total += item.getTotalValue();
         }
-        System.out.println("Total:\t\t\t\t" + total);
-
+    
+        System.out.printf("Total:%29.2f%n", total);
+    
         System.out.println("**********************************************************");
         System.out.println("THANK YOU FOR SHOPPING WITH US");
         System.out.println("**********************************************************");
         listOfItemsPurchased.clear();
         System.exit(0);
     }
-
 }
+
+    
