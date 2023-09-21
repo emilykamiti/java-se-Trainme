@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.Classes;
+package com.systechafrica.part2.Classes;
 
 public class Car {
     // Instance Variables

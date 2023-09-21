@@ -1,6 +1,6 @@
-package com.systechafrica.Part2.staticclasses.nestedpackage;
+package com.systechafrica.part2.staticclasses.nestedpackage;
 
-import static com.systechafrica.Part2.staticclasses.ATMUtils.maskCardNumber;
+import static com.systechafrica.part2.staticclasses.ATMUtils.maskCardNumber;
 
 public class nestedPackageDemo {
     public static void main(String[] args) {

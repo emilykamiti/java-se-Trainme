@@ -1,7 +1,7 @@
-package com.systechafrica.Part2.accessmodifiers;
+package com.systechafrica.part2.accessmodifiers;
 
 
-import com.systechafrica.Part2.accessmodifiers.lms.Book;
+import com.systechafrica.part2.accessmodifiers.lms.Book;
 
 public class AccessModifiers {
    // private static final Logger LOGGER = Logger.getLogger(AccessModifiers.class.getName()); 

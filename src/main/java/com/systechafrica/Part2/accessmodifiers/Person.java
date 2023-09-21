@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.accessmodifiers;
+package com.systechafrica.part2.accessmodifiers;
 
 public class Person {
     private String name;

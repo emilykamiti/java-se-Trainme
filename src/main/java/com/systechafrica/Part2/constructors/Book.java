@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.constructors;
+package com.systechafrica.part2.constructors;
 
 public class Book {
     private int isbn;

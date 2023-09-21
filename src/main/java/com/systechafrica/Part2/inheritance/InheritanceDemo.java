@@ -1,9 +1,9 @@
-package com.systechafrica.Part2.inheritance;
+package com.systechafrica.part2.inheritance;
 
 import java.util.logging.Logger;
 
-import com.systechafrica.Part2.inheritance.companysetup.QualityAssurance;
-import com.systechafrica.Part2.inheritance.companysetup.SoftwareEngineer;
+import com.systechafrica.part2.inheritance.companysetup.QualityAssurance;
+import com.systechafrica.part2.inheritance.companysetup.SoftwareEngineer;
 
 public class InheritanceDemo extends Object {
     private static final Logger LOGGER = Logger.getLogger(InheritanceDemo.class.getName());

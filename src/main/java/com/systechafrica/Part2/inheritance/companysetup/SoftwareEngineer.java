@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.inheritance.companysetup;
+package com.systechafrica.part2.inheritance.companysetup;
 
 public class SoftwareEngineer extends Employee {
     private String title;

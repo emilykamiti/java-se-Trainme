@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.constractors1;
+package com.systechafrica.part2.constractors1;
 
 //!method overloading: many methods in one class
 public class MethodOverloading {

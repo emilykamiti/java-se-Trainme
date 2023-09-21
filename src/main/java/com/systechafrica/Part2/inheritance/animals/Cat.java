@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.inheritance.animals;
+package com.systechafrica.part2.inheritance.animals;
 
 public class Cat extends Animal {
     

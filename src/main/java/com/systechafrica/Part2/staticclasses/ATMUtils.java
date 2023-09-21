@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.staticclasses;
+package com.systechafrica.part2.staticclasses;
 
 public class ATMUtils {
     public static String maskCardNumber(String cardNumber) {

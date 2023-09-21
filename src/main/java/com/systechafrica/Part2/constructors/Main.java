@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.constructors;
+package com.systechafrica.part2.constructors;
 
 public class Main {
     int x; // created class variable/attribute

@@ -1,4 +1,4 @@
-package com.systechafrica.Part2.encapsulation;
+package com.systechafrica.part2.encapsulation;
 
 public class Student {
     private int marks;
