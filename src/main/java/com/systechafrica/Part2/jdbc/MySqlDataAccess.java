@@ -5,10 +5,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
-import javax.print.DocFlavor.URL;
 
 public class MySqlDataAccess implements DataAccess {
+public static final Logger LOGGER = Logger.getLogger(MySqlDataAccess.class.getName());
 
     public MySqlDataAccess() {
 
@@ -30,13 +31,16 @@ public class MySqlDataAccess implements DataAccess {
     public Connection connect() {
         try {
             Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/mydatabase",
-                    "myuser",
-                    "mysecretpassword");
+                    "jdbc:mysql://localhost:3308/javase",
+                    "javase",
+                    "javase");
+                    LOGGER.info("Connected");
             return connection;
+
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+             LOGGER.info("Did not Connect!");
             return null;
         }
     }

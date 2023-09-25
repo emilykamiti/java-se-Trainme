@@ -5,19 +5,22 @@ import java.sql.SQLException;
 
 public class JdbcDemo {
     public static void main(String[] args) {
-       
-        try {
+
         DataAccess mysql = new MySqlDataAccess();
         mysql.connect();
-        ResultSet productResultSet = mysql.executeQuery("SELECT * from users");
-        while (productResultSet.next()){
+        try {
+            ResultSet productResultSet = mysql.executeQuery("SELECT * from products");
+            while (productResultSet.next()) {
                 int productId = productResultSet.getInt("id");
                 String productName = productResultSet.getString("name");
-                System.out.println("ID: " + productId + "Name:" + productName) ;
+                System.out.println("ID: " + productId + "Name: " + productName);
 
             }
         } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        mysql.close();
+
     }
 }
