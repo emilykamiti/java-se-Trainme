@@ -16,8 +16,8 @@ public class SaleSystem {
         if (loggedIn) {
             System.out.println("Successful login!");
 
-            boolean showingOutput = true;
-            while (showingOutput) {
+            boolean keepShowingItem = true;
+            while (keepShowingItem) {
                 sys.displayOutput();
                 int option = sys.scanner.nextInt();
                 sys.scanner.nextLine();
@@ -28,6 +28,10 @@ public class SaleSystem {
                     sys.makePayment();
                 } else if (option == 3) {
                     sys.displayReceipt();
+                } else if (option == 4){
+                    keepShowingItem = false;
+                    sys.quit();
+
                 } else {
                     System.out.println("Invalid option");
                 }
@@ -48,6 +52,7 @@ public class SaleSystem {
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
         System.out.println("3. DISPLAY RECEIPT");
+        System.out.println("4. QUIT");
 
         System.out.println("");
         System.out.println("choose an option");
@@ -129,4 +134,9 @@ public class SaleSystem {
         listOfItemsPurchased.clear();
         System.exit(0);
     }
+
+    public void quit (){
+        System.out.println("Exited system...");
+        System.exit(0);
+    } 
 }
