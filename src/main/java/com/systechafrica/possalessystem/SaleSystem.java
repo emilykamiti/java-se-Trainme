@@ -23,12 +23,21 @@ public class SaleSystem {
                 sys.scanner.nextLine();
 
                 if (option == 1) {
+
                     sys.addItem();
                 } else if (option == 2) {
-                    sys.makePayment();
+                    if (sys.listOfItemsPurchased.isEmpty()) {
+                        System.out.println("No Item seleceted. Please add item before payment");
+                    } else {
+                        sys.makePayment();
+                    }
                 } else if (option == 3) {
-                    sys.displayReceipt();
-                } else if (option == 4){
+                    if (sys.listOfItemsPurchased.isEmpty()) {
+                        System.out.println("No Item selected Please select item for receipt to be displayed");
+                    } else {
+                        sys.displayReceipt();
+                    }
+                } else if (option == 4) {
                     keepShowingItem = false;
                     sys.quit();
 
@@ -84,16 +93,11 @@ public class SaleSystem {
     }
 
     public void makePayment() {
-        System.out.println("Item Code   Quantity   Unit Price   Total Value");
         double total = 0.0;
 
+        displayItems();
+
         for (ItemsPurchased item : listOfItemsPurchased) {
-            System.out.printf(
-                    "%-12s %-10s %-11s %-12s%n",
-                    item.getItemCode(),
-                    item.getQuantity(),
-                    item.getpricePerItem(),
-                    item.getTotalValue());
             total += item.getTotalValue();
         }
 
@@ -102,22 +106,22 @@ public class SaleSystem {
 
         System.out.println("Enter the amount given by Customer:");
         double amountGiven = scanner.nextDouble();
+        
+        while (amountGiven < total) {
+            System.out.println("Enter the amount given by Customer (must be greater than or equal to the total):");
+            amountGiven = scanner.nextDouble();
+            if (amountGiven < total) {
+                System.out.println("Amount provided is less than the total. Please provide a sufficient amount.");
+            }
+        }
 
         double change = amountGiven - total;
         System.out.printf("Change:%28.2f%n", change);
     }
 
     private void displayReceipt() {
-        System.out.println("Item Code   Quantity   Unit Price   Total Value");
 
-        for (ItemsPurchased item : listOfItemsPurchased) {
-            System.out.printf(
-                    "%-12s %-10s %-11s %-12s%n",
-                    item.getItemCode(),
-                    item.getQuantity(),
-                    item.getpricePerItem(),
-                    item.getTotalValue());
-        }
+        displayItems();
 
         System.out.println("****************************************************");
         double total = 0.0;
@@ -135,8 +139,21 @@ public class SaleSystem {
         System.exit(0);
     }
 
-    public void quit (){
-        System.out.println("Exited system...");
+    private void displayItems() {
+        System.out.println("Item Code   Quantity   Unit Price   Total Value");
+
+        for (ItemsPurchased item : listOfItemsPurchased) {
+            System.out.printf(
+                    "%-12s %-10s %-11s %-12s%n",
+                    item.getItemCode(),
+                    item.getQuantity(),
+                    item.getpricePerItem(),
+                    item.getTotalValue());
+        }
+    }
+
+    public void quit() {
+        System.out.println("Exited System...");
         System.exit(0);
-    } 
+    }
 }
