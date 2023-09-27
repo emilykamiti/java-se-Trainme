@@ -19,6 +19,10 @@ public class Exceptionhandling {
        
        } catch (Exception e) {
         System.out.println(e.getLocalizedMessage());
+       }finally{
+        //release resources
+        studentcontroller = null;
+        System.out.println("Executes no matter");
        }
         
     }
