@@ -1,6 +1,6 @@
 package com.systechafrica.part2.abstractclasses;
 
-public abstract class Animal {
+public abstract class Animal implements Behavior {
     protected String name;
 
     public Animal(String name) {
@@ -13,4 +13,10 @@ public abstract class Animal {
         System.out.println(name + " is Eating");
     }
 
+    @Override
+    public void move() {
+        // TODO Auto-generated method stub
+        
+    }
+    
 }
