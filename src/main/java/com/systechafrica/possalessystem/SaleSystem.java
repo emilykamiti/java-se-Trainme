@@ -96,29 +96,29 @@ public class SaleSystem {
             } else {
                 System.out.println("Invalid code . It must be alphanumeric and atleast 5 letters ");
                 continue;
+            }
+            System.out.println("Input Quantity:");
+            int quantity = scanner.nextInt();
+
+            System.out.println("Input price per item");
+            double pricePerItem = scanner.nextDouble();
+            double totalValue = quantity * pricePerItem;
+
+            if (quantity <= 0 || pricePerItem <= 0) {
+                throw new ItemValidationException("Invalid input, item must be greater than or Zero ");
+            }
+
+            listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
+            scanner.nextLine();
+
+            System.out.println("Item added successfully! ");
+
+            System.out.println("To add another item type 'add if not type N to exit");
+            String addItem = scanner.nextLine();
+            if (addItem.equalsIgnoreCase("add")) {
+                return;
+            }
         }
-        System.out.println("Input Quantity:");
-        int quantity = scanner.nextInt();
-
-        System.out.println("Input price per item");
-        double pricePerItem = scanner.nextDouble();
-        double totalValue = quantity * pricePerItem;
-
-        if (quantity <= 0 || pricePerItem <= 0) {
-            throw new ItemValidationException("Invalid input, item must be greater than or Zero ");
-        }
-        
-        listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
-        scanner.nextLine();
-
-        System.out.println("Item added successfully! ");
-
-        System.out.println("To add another item type 'add if not type N to exit");
-        String addItem = scanner.nextLine();
-        if (addItem.equalsIgnoreCase("add")) {
-            return;
-        }
-    }
     }
 
     private boolean isValidItemCode(String itemCode) {
