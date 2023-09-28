@@ -12,46 +12,59 @@ public class SaleSystem {
 
     public static void main(String[] args) {
         SaleSystem sys = new SaleSystem();
-        boolean loggedIn = sys.login();
-        if (loggedIn) {
-            System.out.println("Successful login!");
+        try {
+            boolean loggedIn = sys.login();
+            if (loggedIn) {
+                System.out.println("Successful login!");
 
-            boolean keepShowingItem = true;
-            while (keepShowingItem) {
-                sys.displayOutput();
-                int option = sys.scanner.nextInt();
-                sys.scanner.nextLine();
+                boolean keepShowingItem = true;
+                while (keepShowingItem) {
+                    sys.displayOutput();
 
-                if (option == 1) {
+                    try {
+                        int option = sys.scanner.nextInt();
+                        sys.scanner.nextLine();
 
-                    sys.addItem();
-                } else if (option == 2) {
-                    if (sys.listOfItemsPurchased.isEmpty()) {
-                        System.out.println("No Item seleceted. Please add item before payment");
-                    } else {
-                        sys.makePayment();
+                        if (option == 1) {
+                            sys.addItem();
+                        } else if (option == 2) {
+                            if (sys.listOfItemsPurchased.isEmpty()) {
+
+                            } else {
+                                sys.makePayment();
+                            }
+                        } else if (option == 3) {
+                            if (sys.listOfItemsPurchased.isEmpty()) {
+                            } else {
+                                sys.displayReceipt();
+                            }
+                        } else if (option == 4) {
+                            keepShowingItem = false;
+                            sys.quit();
+
+                        } else {
+                            System.out.println("Invalid option");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("An error occurred:" + e.getMessage());
+                        sys.scanner.nextLine();
                     }
-                } else if (option == 3) {
-                    if (sys.listOfItemsPurchased.isEmpty()) {
-                        System.out.println("No Item selected Please select item for receipt to be displayed");
-                    } else {
-                        sys.displayReceipt();
-                    }
-                } else if (option == 4) {
-                    keepShowingItem = false;
-                    sys.quit();
-
-                } else {
-                    System.out.println("Invalid option");
                 }
             }
+        } catch (LoginFailedException e) {
+            System.out.println("Loggin Failed" + e.getMessage());
         }
     }
 
-    public boolean login() {
+    public boolean login() throws LoginFailedException {
         AtmMachine app = new AtmMachine();
-        return app.login();
+        boolean loggedIn = app.login();
 
+        if(!loggedIn){
+            throw new LoginFailedException("Login failed. Invalid password ");
+        }
+
+return true;
     }
 
     public void displayOutput() {
@@ -68,7 +81,7 @@ public class SaleSystem {
 
     }
 
-    public void addItem() {
+    public void addItem() throws ItemValidationException{
         System.out.println("Input Item Code:");
         String itemCode = scanner.nextLine();
 
@@ -77,8 +90,12 @@ public class SaleSystem {
 
         System.out.println("Input price per item");
         double pricePerItem = scanner.nextDouble();
-
         double totalValue = quantity * pricePerItem;
+
+        if(quantity <= 0 || pricePerItem <= 0){
+            throw new ItemValidationException("Invalid in put, item must be greater than or Zero ");
+        }
+        
         listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
 
         scanner.nextLine();
@@ -92,7 +109,7 @@ public class SaleSystem {
         }
     }
 
-    public void makePayment() {
+    public void makePayment() throws PaymentValidationException {
         double total = 0.0;
 
         displayItems();
@@ -106,14 +123,11 @@ public class SaleSystem {
 
         System.out.println("Enter the amount given by Customer:");
         double amountGiven = scanner.nextDouble();
-        
+
         while (amountGiven < total) {
-            System.out.println("Enter the amount given by Customer (must be greater than or equal to the total):");
-            amountGiven = scanner.nextDouble();
-            if (amountGiven < total) {
-                System.out.println("Amount provided is less than the total. Please provide a sufficient amount.");
-            }
-        }
+            throw new PaymentValidationException(
+                    "Amount provided is less than expected amount total, enter correct Amount");
+        } // throw exception
 
         double change = amountGiven - total;
         System.out.printf("Change:%28.2f%n", change);

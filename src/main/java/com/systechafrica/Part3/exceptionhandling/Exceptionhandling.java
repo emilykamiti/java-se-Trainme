@@ -1,5 +1,7 @@
 package com.systechafrica.Part3.exceptionhandling;
 
+import java.util.Scanner;
+
 public class Exceptionhandling {
 
     public static void main(String[] args) {
@@ -8,11 +10,33 @@ public class Exceptionhandling {
         // app.workingwithBasicException(calculator);
         app.workingWithException();
     }
+    private Student readStudentDetails(){
+        Student student = new Student();
+        Scanner scanner = new Scanner(System.in);
+
+            try {
+               System.out.println("Enter your details space seperated: ");
+              String name = scanner.next(); 
+               student.setName(name);
+              String regNo = scanner.next(); 
+              student.setRegNo(regNo);
+              String email= scanner.next();
+              student.setEmail(email);
+              System.out.println("Enter your age");
+              int age = scanner.nextInt(); 
+            } catch (Exception e) {
+              System.out.println(e.getMessage());
+            }finally{
+                System.out.println("Release resources....");
+                scanner.close();
+            }
+            return student;
+    }
 
     private void workingWithException() {
         StudentController studentcontroller = new StudentController();
        try {
-        studentcontroller.addStudent(null);
+        studentcontroller.addStudent(readStudentDetails());
         //send message
         SMSSender sender = new SMSSender();
         sender.sendMessage("Your students have been saved");

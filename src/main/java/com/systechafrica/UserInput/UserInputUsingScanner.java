@@ -9,7 +9,7 @@ public class UserInputUsingScanner {
     private static final Logger LOGGER = Logger.getLogger(UserInputUsingScanner.class.getName());
     
     public static void main(String[] args) {
-        final String DB_USERNAME = "Emily";
+        final String DB_USERNAME = "Admin123";
         final String DB_PASSWORD = "Emily30";
 
         Scanner scanner = new Scanner(System.in);
