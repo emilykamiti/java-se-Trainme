@@ -20,7 +20,6 @@ public class SaleSystem {
                 boolean keepShowingItem = true;
                 while (keepShowingItem) {
                     sys.displayOutput();
-
                     try {
                         if (sys.scanner.hasNextInt()) {
                             int option = sys.scanner.nextInt();
@@ -56,7 +55,6 @@ public class SaleSystem {
                         System.out.println("An error occurred: " + e.getMessage());
                         sys.scanner.nextLine();
                     }
-
                 }
             }
         } catch (LoginFailedException e) {
@@ -71,7 +69,6 @@ public class SaleSystem {
         if (!loggedIn) {
             throw new LoginFailedException("Login failed. Invalid password ");
         }
-
         return true;
     }
 
@@ -83,7 +80,6 @@ public class SaleSystem {
         System.out.println("2. MAKE PAYMENT");
         System.out.println("3. DISPLAY RECEIPT");
         System.out.println("4. QUIT");
-
         System.out.println("");
         System.out.println("choose an option");
 
@@ -111,9 +107,8 @@ public class SaleSystem {
         if (quantity <= 0 || pricePerItem <= 0) {
             throw new ItemValidationException("Invalid input, item must be greater than or Zero ");
         }
-
+        
         listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
-
         scanner.nextLine();
 
         System.out.println("Item added successfully! ");
