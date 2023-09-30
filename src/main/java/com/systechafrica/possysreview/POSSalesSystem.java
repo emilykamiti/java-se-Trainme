@@ -18,52 +18,76 @@ public class POSSalesSystem {
     private UserAuthentication loggedInUser;
 
     public static void main(String[] args) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
         POSSalesSystem sys = new POSSalesSystem();
-        PossysDataBase database = new PossysDataBase();
-        Connection connection = database.dbConnection();
-        database.createUserTable(connection);
-        database.createAdminUser(connection, "Admin1", "Admin123");
+       
+        // UserAuthentication userAuthentication = new UserAuthentication();
+        
+        // database.createUserTable(connection);
+        // database.createAdminUser(connection, "Admin1", "Admin123");
+        //  System.out.println("Hellow rol");
+       sys.startApplication();
+        
 
-        sys.handleLogin();
+        // sys.handleLogin();
 
-        try {
-            if (sys.loggedInUser != null) {
-                System.out.println("Successful login!");
-
-                boolean keepShowingItem = true;
-                while (keepShowingItem) {
-                    sys.displayOutput();
-
-                    if (sys.scanner.hasNextInt()) {
-                        int option = sys.scanner.nextInt();
-                        sys.scanner.nextLine();
-                        if (option == 1) {
-                            sys.addItem();
-                        } else if (option == 2) {
-                            if (sys.listOfItemsPurchased.isEmpty()) {
-                                System.out.println("No items added yet");
+    }
+    public void startApplication(){
+         PossysDataBase database = new PossysDataBase();
+         Connection connection = database.dbConnection();
+         try {
+            
+                if (connection != null) {
+                    // Prompt the user for username and password
+                    System.out.print("Enter your username: ");
+                    String inputUsername = scanner.nextLine();
+            
+                    System.out.print("Enter your password: ");
+                    String inputPassword = scanner.nextLine();
+            
+                    // Authenticate the user using the provided username and password
+                    if (database.authenticateUser(connection, inputUsername, inputPassword)) {
+                        System.out.println("Successful login!");
+            
+                        boolean keepShowingItem = true;
+                        while (keepShowingItem) {
+                            displayOutput();
+            
+                            if (scanner.hasNextInt()) {
+                                int option = scanner.nextInt();
+                                scanner.nextLine();
+                                if (option == 1) {
+                                    addItem();
+                                } else if (option == 2) {
+                                    if (listOfItemsPurchased.isEmpty()) {
+                                        System.out.println("No items added yet");
+                                    } else {
+                                        makePayment();
+                                    }
+                                } else if (option == 3) {
+                                    if (listOfItemsPurchased.isEmpty()) {
+                                        System.out.println("No items added yet");
+                                    } else {
+                                        displayReceipt();
+                                    }
+                                } else if (option == 4) {
+                                    keepShowingItem = false;
+                                    quit();
+                                } else {
+                                    System.out.println("Invalid option");
+                                }
                             } else {
-                                sys.makePayment();
+                                System.out.println("Invalid input. Please enter a valid option.");
+                                scanner.nextLine();
                             }
-                        } else if (option == 3) {
-                            if (sys.listOfItemsPurchased.isEmpty()) {
-                                System.out.println("No items added yet");
-                            } else {
-                                sys.displayReceipt();
-                            }
-                        } else if (option == 4) {
-                            keepShowingItem = false;
-                            sys.quit();
-
-                        } else {
-                            System.out.println("Invalid option");
                         }
                     } else {
-                        System.out.println("Invalid input. Please enter a valid option.");
-                        sys.scanner.nextLine();
+                        System.out.println("Login failed. Invalid username or password.");
                     }
-                }
+                } else {
+                    System.out.println("Failed to establish a database connection.");
             }
+            
         } catch (PaymentValidationException e) {
             LOGGER.info("Enter valid input: " + e.getMessage());
 
@@ -190,8 +214,8 @@ public class POSSalesSystem {
         System.exit(0);
     }
 
-    public void handleLogin() throws SQLException {
-        LoginManager loginManager = new LoginManager();
-        loggedInUser = loginManager.handleLogin();
-    }
+    // public void handleLogin() throws SQLException {
+    //     LoginManager loginManager = new LoginManager();
+    //     loggedInUser = loginManager.handleLogin();
+    // }
 }

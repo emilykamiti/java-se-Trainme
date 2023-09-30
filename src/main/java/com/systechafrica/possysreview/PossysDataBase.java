@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 public class PossysDataBase {
     private static final Logger LOGGER = Logger.getLogger(PossysDataBase.class.getName());
     private Scanner scanner = new Scanner(System.in);
+    public PossysDataBase(){
+
+    }
 
     public Connection dbConnection() {
         try {
@@ -83,52 +86,46 @@ public class PossysDataBase {
         }
     }
 
-    public UserAuthentication getUser(String inputUsername, String inputPassword, Connection connection) throws SQLException {
+    public boolean getUserByUsernameAndPassword(String inputUsername, String inputPassword, Connection connection) throws SQLException {
         String gettingUser = "SELECT * FROM users WHERE user_name = ? AND user_password = ?";
-
+    
         PreparedStatement preparedStatement = connection.prepareStatement(gettingUser);
         preparedStatement.setString(1, inputUsername);
         preparedStatement.setString(2, inputPassword);
-
+    
         ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            int id = resultSet.getInt("user_id");
-            String username = resultSet.getString("user_name");
-            String password = resultSet.getString("user_password");
-
-            UserAuthentication userauthenticated = new UserAuthentication(id, username, password);
-            return userauthenticated;
-        } else {
-            LOGGER.warning("Enter correct username and password: " + inputPassword);
-            return null;
-        }
+        return resultSet.next(); // Returns true if a user with the given credentials exists, false otherwise.
     }
+    
 
-    public boolean loginAuthentication(Connection connection, String inputUsername, String inputPassword) throws SQLException {
-        int loginTrials = 1;
-        boolean loggedIn = false;
 
-        while (loginTrials <= 3) {
-            System.out.print("Enter your username: ");
-            String username = scanner.nextLine();
-
-            System.out.print("Enter your password: ");
-            String password = scanner.next();
-            scanner.nextLine();
-
-            UserAuthentication user = getUser(inputUsername, inputPassword, connection);
-            if (user != null) {
-                loggedIn = true;
-                break;
+    public boolean authenticateUser(Connection connection,String inputUsername,String inputPassword ) {
+        try {
+    
+            boolean userExists = getUserByUsernameAndPassword(inputUsername, inputPassword, connection);
+    
+            if (userExists) {
+                LOGGER.info("Login successful for username: " + inputUsername);
+                return true;
             } else {
-                LOGGER.warning("Login failed for username: " + username);
-                LOGGER.warning("Login failed for password: " + password);
-                loginTrials++;
+                LOGGER.warning("Login failed for username: " + inputUsername);
+                return false;
             }
+        } catch (SQLException e) {
+            LOGGER.severe("Error during user authentication: " + e.getMessage());
+            return false;
         }
-        if (!loggedIn) {
-            LOGGER.warning("Login failed after 3 attempts");
-        }
-        return loggedIn;
     }
+    
+    // public UserAuthentication getUserDetails(){
+    //     System.out.print("Enter your username: ");
+    //     String username = scanner.nextLine();
+
+    //     System.out.print("Enter your password: ");
+    //    // if (!loggedIn) {
+        String password = scanner.next();
+    //     scanner.nextLine();
+    //     user
+
+    // }
 }

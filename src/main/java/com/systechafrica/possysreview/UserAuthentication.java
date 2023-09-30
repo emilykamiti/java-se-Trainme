@@ -5,6 +5,9 @@ public class UserAuthentication {
     private String username;
     private String password;
 
+    public UserAuthentication() {
+    }
+
     public UserAuthentication(int id, String username, String password) {
         this.id = id;
         this.username = username;
