@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   javase:
     image: mysql:latest
@@ -9,27 +11,46 @@ services:
       MYSQL_PASSWORD: 'javase'
       MYSQL_ROOT_PASSWORD: 'javase'
     ports:
-      # HOST-PORT:CONTAINER-PORT
       - '3308:3306'
     expose:
       - '3306'
       - '3308'
     volumes:
       - my-db:/var/lib/mysql
+
+  possys:
+    image: mysql:latest
+    restart: always
+    container_name: possys
+    environment:
+      MYSQL_DATABASE: 'possys'
+      MYSQL_USER: 'javase'
+      MYSQL_PASSWORD: 'javase'
+      MYSQL_ROOT_PASSWORD: 'javase'
+    ports:
+      - '3307:3306'
+    expose:
+      - '3306'
+      - '3307'
+    volumes:
+      - possys-db:/var/lib/mysql  # Define the possys-db volume here
+
   javase-postgres:
     image: postgres:latest
     container_name: javase-postgres
     restart: always
     environment:
-    - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=javase
-    - POSTGRES_DB=javase
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=javase
+      - POSTGRES_DB=javase
     ports:
       - '5432:5432'
     expose:
       - '3306'
     volumes:
       - javase-postgres:/var/lib/postgresql/data
+
 volumes:
   my-db:
+  possys-db:  # Define the possys-db volume here
   javase-postgres:
