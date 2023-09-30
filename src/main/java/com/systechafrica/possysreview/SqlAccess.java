@@ -1,4 +1,4 @@
-package com.systechafrica.possystemreviewed;
+package com.systechafrica.possysreview;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

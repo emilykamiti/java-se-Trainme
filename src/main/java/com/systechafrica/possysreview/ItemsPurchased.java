@@ -1,4 +1,4 @@
-package com.systechafrica.possystemreviewed;
+package com.systechafrica.possysreview;
 
 public class ItemsPurchased {
     private String itemCode;

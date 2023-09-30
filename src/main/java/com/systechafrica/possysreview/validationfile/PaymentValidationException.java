@@ -1,4 +1,4 @@
-package com.systechafrica.possystemreviewed.validationfile;
+package com.systechafrica.possysreview.validationfile;
 
     public class PaymentValidationException extends Exception{
         public PaymentValidationException(String message){
