@@ -20,74 +20,74 @@ public class POSSalesSystem {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         POSSalesSystem sys = new POSSalesSystem();
-       
+
         // UserAuthentication userAuthentication = new UserAuthentication();
-        
+
         // database.createUserTable(connection);
         // database.createAdminUser(connection, "Admin1", "Admin123");
-        //  System.out.println("Hellow rol");
-       sys.startApplication();
-        
+        // System.out.println("Hellow rol");
+        sys.startApplication();
 
         // sys.handleLogin();
 
     }
-    public void startApplication(){
-         PossysDataBase database = new PossysDataBase();
-         Connection connection = database.dbConnection();
-         try {
-            
-                if (connection != null) {
-                    // Prompt the user for username and password
-                    System.out.print("Enter your username: ");
-                    String inputUsername = scanner.nextLine();
-            
-                    System.out.print("Enter your password: ");
-                    String inputPassword = scanner.nextLine();
-            
-                    // Authenticate the user using the provided username and password
-                    if (database.authenticateUser(connection, inputUsername, inputPassword)) {
-                        System.out.println("Successful login!");
-            
-                        boolean keepShowingItem = true;
-                        while (keepShowingItem) {
-                            displayOutput();
-            
-                            if (scanner.hasNextInt()) {
-                                int option = scanner.nextInt();
-                                scanner.nextLine();
-                                if (option == 1) {
-                                    addItem();
-                                } else if (option == 2) {
-                                    if (listOfItemsPurchased.isEmpty()) {
-                                        System.out.println("No items added yet");
-                                    } else {
-                                        makePayment();
-                                    }
-                                } else if (option == 3) {
-                                    if (listOfItemsPurchased.isEmpty()) {
-                                        System.out.println("No items added yet");
-                                    } else {
-                                        displayReceipt();
-                                    }
-                                } else if (option == 4) {
-                                    keepShowingItem = false;
-                                    quit();
+
+    public void startApplication() {
+        PossysDataBase database = new PossysDataBase();
+        Connection connection = database.dbConnection();
+        try {
+
+            if (connection != null) {
+                // Prompt the user for username and password
+                System.out.print("Enter your username: ");
+                String inputUsername = scanner.nextLine();
+
+                System.out.print("Enter your password: ");
+                String inputPassword = scanner.nextLine();
+
+                // Authenticate the user using the provided username and password
+                if (database.authenticateUser(connection, inputUsername, inputPassword)) {
+                    System.out.println("Successful login!");
+
+                    boolean keepShowingItem = true;
+                    while (keepShowingItem) {
+                        displayOutput();
+
+                        if (scanner.hasNextInt()) {
+                            int option = scanner.nextInt();
+                            scanner.nextLine();
+                            if (option == 1) {
+                                addItem();
+                            } else if (option == 2) {
+                                if (listOfItemsPurchased.isEmpty()) {
+                                    System.out.println("No items added yet");
                                 } else {
-                                    System.out.println("Invalid option");
+                                    makePayment();
                                 }
+                            } else if (option == 3) {
+                                if (listOfItemsPurchased.isEmpty()) {
+                                    System.out.println("No items added yet");
+                                } else {
+                                    displayReceipt();
+                                }
+                            } else if (option == 4) {
+                                keepShowingItem = false;
+                                quit();
                             } else {
-                                System.out.println("Invalid input. Please enter a valid option.");
-                                scanner.nextLine();
+                                System.out.println("Invalid option");
                             }
+                        } else {
+                            System.out.println("Invalid input. Please enter a valid option.");
+                            scanner.nextLine();
                         }
-                    } else {
-                        System.out.println("Login failed. Invalid username or password.");
                     }
                 } else {
-                    System.out.println("Failed to establish a database connection.");
+                    System.out.println("Login failed. Invalid username or password.");
+                }
+            } else {
+                System.out.println("Failed to establish a database connection.");
             }
-            
+
         } catch (PaymentValidationException e) {
             LOGGER.info("Enter valid input: " + e.getMessage());
 
@@ -169,7 +169,8 @@ public class POSSalesSystem {
         double amountGiven = scanner.nextDouble();
 
         while (amountGiven < total) {
-            throw new PaymentValidationException("Amount provided is less than the expected amount total, enter the correct amount");
+            throw new PaymentValidationException(
+                    "Amount provided is less than the expected amount total, enter the correct amount");
         }
 
         double change = amountGiven - total;
@@ -215,7 +216,7 @@ public class POSSalesSystem {
     }
 
     // public void handleLogin() throws SQLException {
-    //     LoginManager loginManager = new LoginManager();
-    //     loggedInUser = loginManager.handleLogin();
+    // LoginManager loginManager = new LoginManager();
+    // loggedInUser = loginManager.handleLogin();
     // }
 }
