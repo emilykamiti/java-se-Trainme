@@ -2,15 +2,15 @@ package com.systechafrica.possysreview;
 
 public class UserAuthentication {
     private int id;
-    private String username;
+    private String userName;
     private String password;
 
     public UserAuthentication() {
     }
 
-    public UserAuthentication(int id, String username, String password) {
+    public UserAuthentication(int id, String userName, String password) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
     }
 
@@ -23,11 +23,11 @@ public class UserAuthentication {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public String getPassword() {

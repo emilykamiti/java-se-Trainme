@@ -6,12 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class PossysDataBase {
     private static final Logger LOGGER = Logger.getLogger(PossysDataBase.class.getName());
-    private Scanner scanner = new Scanner(System.in);
+
 
     public Connection dbConnection() {
         try {
@@ -52,34 +51,6 @@ public class PossysDataBase {
             LOGGER.info("Table created successfully = " + updateStatus);
         } catch (SQLException e) {
             LOGGER.warning("Failed to create User: " + e.getMessage());
-        }
-    }
-
-    public boolean signUp(Connection connection) {
-        try {
-            System.out.println("Enter your user name:");
-            String username = scanner.nextLine();
-
-            System.out.println("Enter password");
-            String password = scanner.next();
-
-            String insertUser = "INSERT INTO users(user_name, user_password) VALUES (?, ?)";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(insertUser);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-
-            int rowsInserted = preparedStatement.executeUpdate();
-            if (rowsInserted > 0) {
-                LOGGER.info("User successfully signed up");
-                return true;
-            } else {
-                LOGGER.warning("User failed to sign up");
-                return false;
-            }
-        } catch (SQLException e) {
-            LOGGER.severe("Failed to sign up user: " + e.getMessage());
-            return false;
         }
     }
 
