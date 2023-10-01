@@ -1,5 +1,8 @@
 package com.systechafrica.possysreview;
 
+//!UserName: Admin1
+//!password: Admin123
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +18,7 @@ public class POSSalesSystem {
     private static final Logger LOGGER = Logger.getLogger(POSSalesSystem.class.getName());
     private Scanner scanner = new Scanner(System.in);
     private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
-
+   
     public static void main(String[] args) throws SQLException {
         POSSalesSystem sys = new POSSalesSystem();
         sys.startApplication();
@@ -161,8 +164,7 @@ public class POSSalesSystem {
         double amountGiven = scanner.nextDouble();
 
         while (amountGiven < total) {
-            throw new PaymentValidationException(
-                    "Amount is less than expected amount, enter the correct amount");
+            throw new PaymentValidationException( "Amount is less than expected amount, enter the correct amount");
         }
 
         double change = amountGiven - total;
@@ -170,7 +172,6 @@ public class POSSalesSystem {
     }
 
     private void displayReceipt() {
-
         displayItems();
 
         System.out.println("****************************************************");
