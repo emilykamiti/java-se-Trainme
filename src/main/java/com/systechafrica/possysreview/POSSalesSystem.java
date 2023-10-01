@@ -8,27 +8,17 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import com.systechafrica.possysreview.validationfile.ItemValidationException;
-import com.systechafrica.possysreview.validationfile.PaymentValidationException;
+import com.systechafrica.possysreview.validation.ItemValidationException;
+import com.systechafrica.possysreview.validation.PaymentValidationException;
 
 public class POSSalesSystem {
     private static final Logger LOGGER = Logger.getLogger(POSSalesSystem.class.getName());
     private Scanner scanner = new Scanner(System.in);
     private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
-    private UserAuthentication loggedInUser;
 
     public static void main(String[] args) throws SQLException {
-        Scanner scanner = new Scanner(System.in);
         POSSalesSystem sys = new POSSalesSystem();
-
-        // UserAuthentication userAuthentication = new UserAuthentication();
-
-        // database.createUserTable(connection);
-        // database.createAdminUser(connection, "Admin1", "Admin123");
-        // System.out.println("Hellow rol");
         sys.startApplication();
-
-        // sys.handleLogin();
 
     }
 
@@ -36,18 +26,20 @@ public class POSSalesSystem {
         PossysDataBase database = new PossysDataBase();
         Connection connection = database.dbConnection();
         try {
-
             if (connection != null) {
-                // Prompt the user for username and password
+                System.out.println("");
+                System.out.println("Login Here!");
+                System.out.println("");
                 System.out.print("Enter your username: ");
                 String inputUsername = scanner.nextLine();
 
                 System.out.print("Enter your password: ");
                 String inputPassword = scanner.nextLine();
 
-                // Authenticate the user using the provided username and password
                 if (database.authenticateUser(connection, inputUsername, inputPassword)) {
+                    System.out.println("");
                     System.out.println("Successful login!");
+                    System.out.println("");
 
                     boolean keepShowingItem = true;
                     while (keepShowingItem) {
@@ -133,7 +125,7 @@ public class POSSalesSystem {
             double totalValue = quantity * pricePerItem;
 
             if (quantity <= 0 || pricePerItem <= 0) {
-                throw new ItemValidationException("Invalid input: Cannot be a negative value");
+                throw new ItemValidationException("Invalid input: Quantity and price per item must be positive values");
             }
 
             listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
@@ -170,7 +162,7 @@ public class POSSalesSystem {
 
         while (amountGiven < total) {
             throw new PaymentValidationException(
-                    "Amount provided is less than the expected amount total, enter the correct amount");
+                    "Amount is less than expected amount, enter the correct amount");
         }
 
         double change = amountGiven - total;
@@ -191,7 +183,7 @@ public class POSSalesSystem {
         System.out.printf("Total:%29.2f%n", total);
 
         System.out.println("*****************************************************");
-        System.out.println("THANK YOU FOR SHOPPING WITH US");
+        System.out.println("THANK YOU FOR SHOPPING WITH US!");
         System.out.println("*****************************************************");
         listOfItemsPurchased.clear();
         System.exit(0);
@@ -215,8 +207,4 @@ public class POSSalesSystem {
         System.exit(0);
     }
 
-    // public void handleLogin() throws SQLException {
-    // LoginManager loginManager = new LoginManager();
-    // loggedInUser = loginManager.handleLogin();
-    // }
 }

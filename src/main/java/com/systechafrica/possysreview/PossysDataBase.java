@@ -1,6 +1,5 @@
 package com.systechafrica.possysreview;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,9 +12,6 @@ import java.util.logging.Logger;
 public class PossysDataBase {
     private static final Logger LOGGER = Logger.getLogger(PossysDataBase.class.getName());
     private Scanner scanner = new Scanner(System.in);
-    public PossysDataBase(){
-
-    }
 
     public Connection dbConnection() {
         try {
@@ -30,7 +26,7 @@ public class PossysDataBase {
         }
     }
 
-    // Admin/users
+    // ADMIN
     public void createAdminUser(Connection connection, String adminUsername, String adminPassword) {
         try {
             String insertAdminUser = "INSERT INTO users(user_name, user_password) VALUES (?, ?)";
@@ -59,7 +55,7 @@ public class PossysDataBase {
         }
     }
 
-    public boolean SignUp(Connection connection) {
+    public boolean signUp(Connection connection) {
         try {
             System.out.println("Enter your user name:");
             String username = scanner.nextLine();
@@ -87,24 +83,23 @@ public class PossysDataBase {
         }
     }
 
-    public boolean getUserByUsernameAndPassword(String inputUsername, String inputPassword, Connection connection) throws SQLException {
+    public boolean getUserByUsernameAndPassword(String inputUsername, String inputPassword, Connection connection)
+            throws SQLException {
         String gettingUser = "SELECT * FROM users WHERE user_name = ? AND user_password = ?";
-    
+
         PreparedStatement preparedStatement = connection.prepareStatement(gettingUser);
         preparedStatement.setString(1, inputUsername);
         preparedStatement.setString(2, inputPassword);
-    
+
         ResultSet resultSet = preparedStatement.executeQuery();
-        return resultSet.next(); // Returns true if a user with the given credentials exists, false otherwise.
+        return resultSet.next();
     }
-    
 
-
-    public boolean authenticateUser(Connection connection,String inputUsername,String inputPassword ) {
+    public boolean authenticateUser(Connection connection, String inputUsername, String inputPassword) {
         try {
-    
+
             boolean userExists = getUserByUsernameAndPassword(inputUsername, inputPassword, connection);
-    
+
             if (userExists) {
                 LOGGER.info("Login successful for username: " + inputUsername);
                 return true;
@@ -117,16 +112,4 @@ public class PossysDataBase {
             return false;
         }
     }
-    
-    // public UserAuthentication getUserDetails(){
-    //     System.out.print("Enter your username: ");
-    //     String username = scanner.nextLine();
-
-    //     System.out.print("Enter your password: ");
-    //    // if (!loggedIn) {
-        String password = scanner.next();
-    //     scanner.nextLine();
-    //     user
-
-    // }
 }

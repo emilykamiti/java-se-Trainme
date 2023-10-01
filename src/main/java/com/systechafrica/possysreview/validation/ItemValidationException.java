@@ -1,4 +1,4 @@
-package com.systechafrica.possysreview.validationfile;
+package com.systechafrica.possysreview.validation;
 
     public class ItemValidationException extends Exception {
         public ItemValidationException(String message){
