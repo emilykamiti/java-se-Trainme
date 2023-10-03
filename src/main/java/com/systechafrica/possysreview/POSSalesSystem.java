@@ -1,5 +1,7 @@
 package com.systechafrica.possysreview;
 
+import java.io.IOException;
+
 //!UserName: Admin1
 //!password: Admin123
 
@@ -9,8 +11,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
+import com.systechafrica.Part3.logging.CustomFormatter;
 import com.systechafrica.possysreview.validation.ItemValidationException;
 import com.systechafrica.possysreview.validation.PaymentValidationException;
 
@@ -18,9 +22,12 @@ public class POSSalesSystem {
     private static final Logger LOGGER = Logger.getLogger(POSSalesSystem.class.getName());
     private Scanner scanner = new Scanner(System.in);
     private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
-   
+
     public static void main(String[] args) throws SQLException {
+        
+        //posFileLogging();
         POSSalesSystem sys = new POSSalesSystem();
+         posFileLogging();
         sys.startApplication();
 
     }
@@ -29,6 +36,7 @@ public class POSSalesSystem {
         PossysDataBase database = new PossysDataBase();
         Connection connection = database.dbConnection();
         try {
+
             if (connection != null) {
                 System.out.println("");
                 System.out.println("Login Here!");
@@ -95,6 +103,24 @@ public class POSSalesSystem {
             LOGGER.warning("Enter value: " + e.getMessage());
         }
     }
+
+    public static void posFileLogging(){
+        try {
+            FileHandler fileHandler = new FileHandler("poslog.txt",false);
+            CustomFormatter formatter = new CustomFormatter();
+            LOGGER.addHandler(fileHandler);
+            fileHandler.setFormatter(formatter);
+
+           // Class.forName("com.mysql.cd.jdbc.Driver");
+            
+        } catch (SecurityException e) {
+            LOGGER.severe("Un able to connect to the database: " + e.getMessage());
+        } catch (IOException e) {
+            LOGGER.severe("Not Valid input/output: " + e.getMessage());
+        // }catch (ClassNotFoundException e) {
+            // LOGGER.severe("Unable to obtain class for jdb driver" + e.getMessage());
+    }
+}
 
     public void displayOutput() {
         System.out.println("*******************");
@@ -164,7 +190,7 @@ public class POSSalesSystem {
         double amountGiven = scanner.nextDouble();
 
         while (amountGiven < total) {
-            throw new PaymentValidationException( "Amount is less than expected amount, enter the correct amount");
+            throw new PaymentValidationException("Amount is less than expected amount, enter the correct amount");
         }
 
         double change = amountGiven - total;
@@ -202,10 +228,8 @@ public class POSSalesSystem {
                     item.getTotalValue());
         }
     }
-
     public void quit() {
         System.out.println("Exited System...");
         System.exit(0);
     }
-
 }

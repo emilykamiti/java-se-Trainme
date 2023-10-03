@@ -7,7 +7,7 @@ public class ForLoopsMastery {
         Scanner scanner = new Scanner(System.in);
 
         // ?The variable can be declared and set inside the loop and can be accesssed
-        // onyl with in the loop
+        // only with in the loop
         // for(int i= 1; i<=5; i++){
         // System.out.println("Hello: " + i);
         // }

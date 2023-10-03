@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Logger;
 
 public class PossysDataBase {
-    private static final Logger LOGGER = Logger.getLogger(PossysDataBase.class.getName());
+   private static final Logger LOGGER = Logger.getLogger(POSSalesSystem.class.getName());
 
 
     public Connection dbConnection() {
