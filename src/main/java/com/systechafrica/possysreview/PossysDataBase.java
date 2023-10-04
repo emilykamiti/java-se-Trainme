@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Logger;
 
 public class PossysDataBase {
@@ -40,17 +39,6 @@ public class PossysDataBase {
             }
         } catch (SQLException e) {
             LOGGER.severe("Cannot create admin user: " + e.getMessage());
-        }
-    }
-
-    public void createUserTable(Connection connection) {
-        try {
-            Statement statement = connection.createStatement();
-            String createUserTable = "CREATE TABLE IF NOT EXISTS users(user_id INT AUTO_INCREMENT PRIMARY KEY, user_name VARCHAR(230) NOT NULL, user_password VARCHAR(250) NOT NULL) ENGINE=InnoDB;";
-            int updateStatus = statement.executeUpdate(createUserTable);
-            LOGGER.info("Table created successfully = " + updateStatus);
-        } catch (SQLException e) {
-            LOGGER.warning("Failed to create User: " + e.getMessage());
         }
     }
 

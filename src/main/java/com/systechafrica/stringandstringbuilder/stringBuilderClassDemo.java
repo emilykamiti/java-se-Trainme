@@ -8,7 +8,7 @@ public class stringBuilderClassDemo {
 
     public static void main(String[] args) {
 
-        StringBuilder sb = new StringBuilder(100); // cappacity not the number of characters
+        StringBuilder sb = new StringBuilder(100); // capacity not the number of characters
         sb.append(" ");
         String str = " ";
 

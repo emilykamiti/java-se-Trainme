@@ -7,7 +7,7 @@ public abstract class Animal implements Behavior {
         this.name = name;
     }
 
-    public abstract void makeseound();
+    public abstract void makesound();
 
     public void eat() {
         System.out.println(name + " is Eating");

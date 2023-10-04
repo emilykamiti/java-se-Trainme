@@ -27,7 +27,7 @@ public class POSSalesSystem {
         
         //posFileLogging();
         POSSalesSystem sys = new POSSalesSystem();
-         posFileLogging();
+        posFileLogging();
         sys.startApplication();
 
     }
@@ -106,7 +106,7 @@ public class POSSalesSystem {
 
     public static void posFileLogging(){
         try {
-            FileHandler fileHandler = new FileHandler("poslog.txt",false);
+            FileHandler fileHandler = new FileHandler("poslog.txt",false );
             CustomFormatter formatter = new CustomFormatter();
             LOGGER.addHandler(fileHandler);
             fileHandler.setFormatter(formatter);
