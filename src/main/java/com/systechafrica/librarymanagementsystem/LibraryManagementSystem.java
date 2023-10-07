@@ -60,7 +60,7 @@ public class LibraryManagementSystem {
     }
 
     public void displayMenu() {
-        System.out.println("Here is the library Menu");
+        System.out.println("Here is the library Menu: ");
         System.out.println("1. Add a book(s)");
         System.out.println("2. Show Books");
         System.out.println("3. Borrow a book");
