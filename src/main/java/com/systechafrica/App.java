@@ -1,17 +1,19 @@
 package com.systechafrica;
 
-import java.util.logging.Logger;
+
 
 public class App{
-private static final Logger LOGGER = Logger.getLogger(App.class.getName());
+static int count = 0;
+int i =0;
 
-    public static void main( String[] args)
-    {
-        LOGGER.warning ("Hello World!" );
-    }
-    public int add(int a, int b){
-        return a + b;
-    }
-    
+public void changeCount(){
+while (i<5){
+    i++;
+    count++;
 }
 
+}
+public static void main(String[] args) {
+    
+}
+}

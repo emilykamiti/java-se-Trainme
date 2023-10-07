@@ -1,6 +1,26 @@
-package com.systechafrica.part2.interfaces;
+// package com.systechafrica.part2.interfaces;
 
-public interface Calculator {
-    int sum(int a, int b);
-    int sum(int a, int b, int... otherValues);
-}
+// public class Calculator {
+//     public Calculator() {
+//         System.out.print("Calculator");
+//     }
+
+// }
+
+// class B extends Calculator {
+//     public B() {
+//         System.out.print("B");
+//     }
+    
+//     class C extends B {
+//         public C() {
+//             System.out.print("C");
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         C c = new C();
+
+//     }
+
+// }
