@@ -1,6 +1,6 @@
-// package com.systechafrica.Part3.generics;
+package com.systechafrica.Part3.generics;
 
-// public class Calculator <T, P> {
+public class Calculator <T, P> {
 
     
-// }
+}

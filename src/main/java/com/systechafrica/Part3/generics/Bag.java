@@ -1,5 +1,5 @@
-// package com.systechafrica.Part3.generics;
+package com.systechafrica.Part3.generics;
 
-// public class Bag {
-//     
-// }
+public class Bag {
+    
+}

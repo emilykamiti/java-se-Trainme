@@ -1,20 +1,20 @@
-// package com.systechafrica.Part3.generics;
+package com.systechafrica.Part3.generics;
 
-// public class Storage {
+public class Storage {
 
-//     public void store(MaizeFloor[] maizeFloors){
-
-        
-//     }
-
-//     public void store(Bag[] bags){
+    public void store(MaizeFloor[] maizeFloors){
 
         
-//     }
+    }
+
+    public void store(Bag[] bags){
+
+        
+    }
     
 
-//  public static void main(String[] args) {
+ public static void main(String[] args) {
     
-//  }
+ }
 
-// }
+}
