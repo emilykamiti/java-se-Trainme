@@ -1,8 +1,11 @@
-package com.systechafrica.Part3.generics;
+// package com.systechafrica.Part3.generics;
 
-public class StorageGenerics {
- public static void main(String[] args) {
+// public class StorageGenerics <T> {
+//     public void store(T[] items){
+
+//     }
+//     public T store(T item){
+//         return item;
+//     }
     
- }
-
-}
+// }
