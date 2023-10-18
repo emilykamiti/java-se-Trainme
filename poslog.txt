@@ -1,0 +1,10 @@
+2023-10-18 05:12:24 | startApplication | INFO | Application started, welcome to systech POS 
+2023-10-18 05:12:35 | startApplication | INFO | Successful login! 
+2023-10-18 05:12:40 | addItem | WARNING | Invalid code. It must be alphanumeric and at least 5 characters. 
+2023-10-18 05:12:44 | addItem | WARNING | Invalid code. It must be alphanumeric and at least 5 characters. 
+2023-10-18 05:12:53 | addItem | WARNING | Invalid input. Quantity must be a positive integer. 
+2023-10-18 05:14:03 | addItem | WARNING | Invalid input. Price per item must be a positive number. 
+2023-10-18 05:14:03 | addItem | WARNING | Invalid input. Price per item must be a positive number. 
+2023-10-18 05:14:10 | addItem | INFO | Item added successfully! 
+2023-10-18 14:10:57 | startApplication | WARNING | Invalid input. Please enter a valid option. 
+2023-10-18 14:11:25 | makePayment | INFO | Enter the amount given by Customer: 

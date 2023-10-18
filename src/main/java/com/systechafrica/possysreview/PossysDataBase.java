@@ -12,7 +12,6 @@ public class PossysDataBase {
 
     public Connection dbConnection() {
         try {
-            //LOGGER.info("Application started");
             String connectionUrl = "jdbc:mysql://localhost:3308/javase";
             String user = "javase";
             String password = "javase";
