@@ -16,11 +16,13 @@ public class POSSalesSystem {
     private static final Logger LOGGER = Logger.getLogger(POSSalesSystem.class.getName());
     private Scanner scanner = new Scanner(System.in);
     private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
-
+    private FileHandler fileHandler;
     public static void main(String[] args) {
         POSSalesSystem sys = new POSSalesSystem();
-        sys.posFileLogging();
-        sys.startApplication();
+            sys.posFileLogging();
+            sys.startApplication();
+            sys.closeResources();
+
     }
 
     public void startApplication() {
@@ -39,20 +41,20 @@ public class POSSalesSystem {
                 System.out.print("Enter your password: ");
                 String inputPassword = scanner.nextLine();
 
-                if (database.authenticateUser(connection, inputUsername, inputPassword)){
+                if (database.authenticateUser(connection, inputUsername, inputPassword)) {
                     System.out.println("");
                     LOGGER.info("Successful login! \n");
                     System.out.println("");
                     boolean keepShowingItem = true;
                     while (keepShowingItem) {
                         displayOutput();
-                        if(scanner.hasNextInt()) {
+                        if (scanner.hasNextInt()) {
                             int option = scanner.nextInt();
                             scanner.nextLine();
-                            if (option == 1){
+                            if (option == 1) {
                                 addItem();
-                            } else if (option == 2){
-                                if (listOfItemsPurchased.isEmpty()){
+                            } else if (option == 2) {
+                                if (listOfItemsPurchased.isEmpty()) {
                                     LOGGER.warning("No items added yet \n");
                                 } else {
                                     makePayment();
@@ -221,6 +223,16 @@ public class POSSalesSystem {
                     item.getQuantity(),
                     item.getpricePerItem(),
                     item.getTotalValue());
+        }
+    }
+
+    private void closeResources() {
+        if (scanner != null) {
+            scanner.close();
+        }
+
+        if (fileHandler != null) {
+            fileHandler.close();
         }
     }
 
