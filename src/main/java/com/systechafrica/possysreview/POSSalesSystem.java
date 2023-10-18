@@ -185,16 +185,13 @@ public class POSSalesSystem {
 
     private void displayReceipt() {
         displayItems();
-
         System.out.println("****************************************************");
         double total = 0.0;
-
         for (ItemsPurchased item : listOfItemsPurchased) {
             total += item.getTotalValue();
         }
 
         System.out.printf("Total:%29.2f%n", total);
-
         System.out.println("*****************************************************");
         System.out.println("THANK YOU FOR SHOPPING WITH US!");
         System.out.println("*****************************************************");
@@ -204,7 +201,6 @@ public class POSSalesSystem {
 
     private void displayItems() {
         System.out.println("Item Code   Quantity   Unit Price   Total Value");
-
         for (ItemsPurchased item : listOfItemsPurchased) {
             System.out.printf(
                     "%-12s %-10s %-11s %-12s%n",
