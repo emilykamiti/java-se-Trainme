@@ -1,10 +1,6 @@
 package com.systechafrica.possysreview;
 
 import java.io.IOException;
-
-//!UserName: Admin1
-//!password: Admin123
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +8,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.systechafrica.Part3.logging.CustomFormatter;
@@ -23,20 +20,18 @@ public class POSSalesSystem {
     private Scanner scanner = new Scanner(System.in);
     private List<ItemsPurchased> listOfItemsPurchased = new ArrayList<>();
 
-    public static void main(String[] args) throws SQLException {
-        
-        //posFileLogging();
+    public static void main(String[] args) {
         POSSalesSystem sys = new POSSalesSystem();
-        posFileLogging();
+        sys.posFileLogging();
         sys.startApplication();
-
     }
 
     public void startApplication() {
         PossysDataBase database = new PossysDataBase();
         Connection connection = database.dbConnection();
+        database.initializeDatabase();
         try {
-
+            LOGGER.info("Application started, welcome to systech POS \n");
             if (connection != null) {
                 System.out.println("");
                 System.out.println("Login Here!");
@@ -49,7 +44,7 @@ public class POSSalesSystem {
 
                 if (database.authenticateUser(connection, inputUsername, inputPassword)) {
                     System.out.println("");
-                    System.out.println("Successful login!");
+                    LOGGER.info("Successful login! \n");
                     System.out.println("");
 
                     boolean keepShowingItem = true;
@@ -63,13 +58,13 @@ public class POSSalesSystem {
                                 addItem();
                             } else if (option == 2) {
                                 if (listOfItemsPurchased.isEmpty()) {
-                                    System.out.println("No items added yet");
+                                    LOGGER.warning("No items added yet \n");
                                 } else {
                                     makePayment();
                                 }
                             } else if (option == 3) {
                                 if (listOfItemsPurchased.isEmpty()) {
-                                    System.out.println("No items added yet");
+                                    LOGGER.warning("No items added yet \n");
                                 } else {
                                     displayReceipt();
                                 }
@@ -77,50 +72,43 @@ public class POSSalesSystem {
                                 keepShowingItem = false;
                                 quit();
                             } else {
-                                System.out.println("Invalid option");
+                                LOGGER.warning("Invalid option \n");
                             }
                         } else {
-                            System.out.println("Invalid input. Please enter a valid option.");
+                            LOGGER.warning("Invalid input. Please enter a valid option. \n");
                             scanner.nextLine();
                         }
                     }
                 } else {
-                    System.out.println("Login failed. Invalid username or password.");
+                    LOGGER.warning("Login failed. Invalid username or password. \n");
                 }
             } else {
-                System.out.println("Failed to establish a database connection.");
+                LOGGER.warning("Failed to establish a database connection. \n");
             }
-
         } catch (PaymentValidationException e) {
             LOGGER.info("Enter valid input: " + e.getMessage());
-
         } catch (ItemValidationException e) {
             LOGGER.warning("Enter valid input: " + e.getMessage());
         } catch (InputMismatchException e) {
             LOGGER.warning("Enter valid input to continue: " + e.getMessage());
-
         } catch (NullPointerException e) {
-            LOGGER.warning("Enter value: " + e.getMessage());
+            LOGGER.warning("Enter correct input: " + e.getMessage());
         }
     }
 
-    public static void posFileLogging(){
+    public void posFileLogging() {
         try {
-            FileHandler fileHandler = new FileHandler("poslog.txt",false );
+            FileHandler fileHandler = new FileHandler("poslog.txt", false);
             CustomFormatter formatter = new CustomFormatter();
+
             LOGGER.addHandler(fileHandler);
             fileHandler.setFormatter(formatter);
-
-           // Class.forName("com.mysql.cd.jdbc.Driver");
-            
         } catch (SecurityException e) {
-            LOGGER.severe("Un able to connect to the database: " + e.getMessage());
+            LOGGER.severe("Unable to connect to the database: \n" + e.getMessage());
         } catch (IOException e) {
-            LOGGER.severe("Not Valid input/output: " + e.getMessage());
-        // }catch (ClassNotFoundException e) {
-            // LOGGER.severe("Unable to obtain class for jdb driver" + e.getMessage());
+            LOGGER.severe("Invalid:  \n" + e.getMessage());
+        }
     }
-}
 
     public void displayOutput() {
         System.out.println("*******************");
@@ -143,13 +131,13 @@ public class POSSalesSystem {
             if (isValidItemCode(itemCode)) {
                 isValidItemCode = true;
             } else {
-                System.out.println("Invalid code. It must be alphanumeric and at least 5 characters.");
+                LOGGER.warning("Invalid code. It must be alphanumeric and at least 5 characters. \n");
                 continue;
             }
             System.out.println("Input Quantity:");
             int quantity = scanner.nextInt();
 
-            System.out.println("Input price per item");
+            System.out.println("Input price per item ");
             double pricePerItem = scanner.nextDouble();
             double totalValue = quantity * pricePerItem;
 
@@ -160,9 +148,9 @@ public class POSSalesSystem {
             listOfItemsPurchased.add(new ItemsPurchased(itemCode, quantity, pricePerItem, totalValue));
             scanner.nextLine();
 
-            System.out.println("Item added successfully!");
+            LOGGER.info("Item added successfully! \n");
 
-            System.out.println("To add another item type 'add' or 'N' to exit");
+            System.out.println("To add another item type 'add' or 'N' to exit: ");
             String addItem = scanner.nextLine();
             if (addItem.equalsIgnoreCase("N")) {
                 break;
@@ -178,15 +166,13 @@ public class POSSalesSystem {
         double total = 0.0;
 
         displayItems();
-
         for (ItemsPurchased item : listOfItemsPurchased) {
             total += item.getTotalValue();
         }
-
         System.out.println("***********************************");
         System.out.printf("Total:%29.2f%n", total);
 
-        System.out.println("Enter the amount given by Customer:");
+        LOGGER.info("Enter the amount given by Customer: \n");
         double amountGiven = scanner.nextDouble();
 
         while (amountGiven < total) {
@@ -228,8 +214,9 @@ public class POSSalesSystem {
                     item.getTotalValue());
         }
     }
+
     public void quit() {
-        System.out.println("Exited System...");
+        LOGGER.info("Exited System...\n");
         System.exit(0);
     }
 }
